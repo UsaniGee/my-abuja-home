@@ -1,0 +1,37 @@
+import { buildConfig } from 'payload'
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import sharp from 'sharp'
+
+import { Users } from './payload/collections/Users' 
+import { Media } from './payload/collections/Media'
+import { Properties } from './payload/collections/Properties'
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
+export default buildConfig({
+  admin: {
+    user: Users.slug,
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
+  },
+  collections: [
+    Users,
+    Media, 
+    Properties
+    ],
+  editor: lexicalEditor({}),
+  secret: process.env.PAYLOAD_SECRET || '',
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URI || 'mongodb://127.0.0.1/my-abuja-home',
+  }),
+  sharp,
+  plugins: [],
+})

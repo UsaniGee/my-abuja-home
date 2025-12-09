@@ -80,7 +80,7 @@ const OurServicesHome = () => {
                                 <span className='border rounded-full border-black group-hover:border-white px-4 py-4'><ArrowUpRight className='' /></span>
                             </div>
                            <div className='flex w-full justify-end'>
-                           <Image src={item.image} alt={item.title} width={779} height={313.0441589355469} className='rounded-[15px]' />
+                           <Image src={item.image} alt={item.title} width={779} height={313.0441589355469} className='rounded-[15px] w-full' />
                            </div>
                         </div>
                     </Card>

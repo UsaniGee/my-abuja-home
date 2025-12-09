@@ -5,10 +5,11 @@ import TestimonialPartnersHome from '../components/landing/testimonial/testimoni
 import OurTeamHome from '../components/landing/our-team/our-team'
 import AboutStatistics from './components/about-statistics'
 import MissionVision from './components/mission-vision'
+import Newsletter from '../components/landing/newsletter/newsletter'
 
 const About = () => {
   return (
-    <div className=''>
+    <>
       <InnerPageHero
         backgroundImage="https://res.cloudinary.com/dnu4lxiie/image/upload/v1764678864/about-hero_w4ngw5.png"
         title="About Us"
@@ -18,10 +19,10 @@ const About = () => {
           { label: 'About us' }
         ]}
         overlayOpacity={0.6}
-        height="min-h-screen"
+        // height="min-h-scree"
       />
 
-      <div className='rounded-3xl'> 
+      <div className='rounded-3xl'>
       <div className='absolut px-5 py-10 lg:py-[80px] lg:px-[56px] -top-50 w-full'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
           <div className='grid gap-10'>
@@ -48,10 +49,8 @@ const About = () => {
             </div>
           </div>
         </div>
-
-        
       </div>
-      </div>
+      
 
       <div className=''>
 
@@ -59,9 +58,13 @@ const About = () => {
       <MissionVision />
       <OurTeamHome />
       <TestimonialPartnersHome />
+      <Newsletter />
       </div>
+      </div>
+
+      
      
-    </div>
+    </>
   )
 }
 

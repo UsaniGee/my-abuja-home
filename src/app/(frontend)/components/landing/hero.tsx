@@ -32,7 +32,7 @@ const Hero = () => {
     <div className='relative min-h-screen flex justify-center items-center p-5'>
       <div 
         className='absolute inset-0 bg-cover bg-center bg-no-repeat'
-        style={{ backgroundImage: `url(https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303706/HeroBgImg_adjvkt.jpg)` }}
+        style={{ backgroundImage: `url(https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1920/v1764303706/HeroBgImg_adjvkt.jpg)` }}
       />
       
       <div className='absolute inset-0 bg-black/40' />

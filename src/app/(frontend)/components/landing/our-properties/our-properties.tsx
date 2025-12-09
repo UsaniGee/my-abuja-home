@@ -5,6 +5,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import BgImage from '../../../../../../public/AboutImg.svg'
 import Properties from './components/properties'
+import Link from 'next/link'
 
 const OurProperitiesHome = () => {
     const router = useRouter()
@@ -30,7 +31,8 @@ const OurProperitiesHome = () => {
         </div>
 
         <div className='flex justify-center items-center gap-5 px-5 pb-10 pt-10 lg:pb-[80px] lg:px-[56px]'>
-          <span>Explore expertly crafted real estate projects built for lasting value</span><span className='text-primary underline'>View all properties</span>
+          <span>Explore expertly crafted real estate projects built for lasting value</span>
+          <Link href='/properties' className='text-primary underline'>View all properties</Link>
         </div>
     </div>
   )

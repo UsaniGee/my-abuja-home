@@ -28,21 +28,21 @@ const data = [
         title: 'What we do',
         description: 'Our primary goals are to acquire, build,market and sell real estate in all forms(land, buildings, etc.).',
         btnText: 'Our Solutions',
-        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764928904/daniel-barnes-RKdLlTyjm5g-unsplash_cgeadz.jpg'
+        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_800/v1764928904/daniel-barnes-RKdLlTyjm5g-unsplash_cgeadz.jpg'
     },
      {
         key: 2,
         title: 'Our impact',
         description: 'We are in partnership with the top 20 property development companies in abuja make an impact.',
         btnText: 'See properties',
-        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764913405/Container_bckbdl.png'
+        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_800/v1764913405/Container_bckbdl.png'
     },
      {
         key: 3,
         title: 'Core Values',
         description: 'To offer the best options to you, at affordable prices, no matter the location.',
         btnText: 'Discover More',
-        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764913372/a670b8bb3db17896eb7f2e6f63110d2dc48d8143_rj3mjf.jpg'
+        image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_800/v1764913372/a670b8bb3db17896eb7f2e6f63110d2dc48d8143_rj3mjf.jpg'
     },
 ]
 
@@ -65,11 +65,11 @@ const data = [
 
         <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-full min-h-[500px]">
           <Image
-            src="https://res.cloudinary.com/dnu4lxiie/image/upload/v1764911583/efcd471d9ce2428e3e5c7844d0fd9349f7e5e545_g0larz.jpg"
+            src="https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764911583/efcd471d9ce2428e3e5c7844d0fd9349f7e5e545_g0larz.jpg"
             alt="Professional woman working"
             fill
             className="object-cover"
-            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-linear-to-tr from-[#A10D44]/40 to-transparent" />
           

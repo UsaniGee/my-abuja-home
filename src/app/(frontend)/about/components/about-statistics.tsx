@@ -109,11 +109,11 @@ const AboutStatistics = () => {
       
       <div className="absolute inset-0 mx-5 lg:mx-[56px] my-10 lg:my-[80px]">
         <Image
-          src="https://res.cloudinary.com/dnu4lxiie/image/upload/v1764841896/4b4cbef24bbf4459a1e82dfcb3f17875081cb4bc_nkpfrb.jpg"
+          src="https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1600/v1764841896/4b4cbef24bbf4459a1e82dfcb3f17875081cb4bc_nkpfrb.jpg"
           alt="Team collaboration"
           fill
           className="object-cover rounded-3xl"
-          priority
+          sizes="(max-width: 768px) 100vw, 80vw"
         />
         <div className="absolute inset-0 bg-black/20 rounded-3xl" />
       </div>

@@ -8,6 +8,7 @@ import TestimonialPartnersHome from './components/landing/testimonial/testimonia
 import MediaHome from './components/landing/media/media'
 import SuccessStoriesHome from './components/landing/success-stories/success-stories'
 import OurTeamHome from './components/landing/our-team/our-team'
+import Newsletter from './components/landing/newsletter/newsletter'
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <MediaHome />
       <SuccessStoriesHome />  
       <OurTeamHome />
+      <Newsletter />
     </div>
   )
 }

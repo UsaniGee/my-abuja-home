@@ -6,25 +6,25 @@ const SuccessStoriesHome = () => {
     {
       id: 1,
       title: 'Where in Abuja do you desire a property?',
-      youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube video ID
-      thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
+      youtubeId: '3YXdkKXARuU', 
+      thumbnail: 'https://img.youtube.com/vi/3YXdkKXARuU/maxresdefault.jpg'
     },
     {
       id: 2,
       title: 'Which would you rather invest in a Condo or a Duplex?',
-      youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube video ID
-      thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
+      youtubeId: 'MapGXs8bJ0Q',
+      thumbnail: 'https://img.youtube.com/vi/MapGXs8bJ0Q/maxresdefault.jpg'   
     },
     {
       id: 3,
       title: 'Value After 2 Years - Investment Analysis',
-      youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube video ID
+      youtubeId: 'dQw4w9WgXcQ', 
       thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
     },
     {
       id: 4,
       title: 'Where in Abuja do you desire a property?',
-      youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube video ID
+      youtubeId: 'dQw4w9WgXcQ', 
       thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
     }
   ]

@@ -107,7 +107,7 @@ const AwardsHome = () => {
     const animate1 = () => {
       if (!isPaused && !isDragging1) {
         setAutoOffset1((prev) => {
-          const newOffset = prev + 0.5 
+          const newOffset = prev + 0.3 // Reduced from 0.5 for better performance
           return newOffset >= totalWidth ? 0 : newOffset
         })
       }
@@ -117,7 +117,7 @@ const AwardsHome = () => {
     const animate2 = () => {
       if (!isPaused && !isDragging2) {
         setAutoOffset2((prev) => {
-          const newOffset = prev - 0.5 
+          const newOffset = prev - 0.3 // Reduced from 0.5 for better performance
           return newOffset <= -totalWidth ? 0 : newOffset
         })
       }

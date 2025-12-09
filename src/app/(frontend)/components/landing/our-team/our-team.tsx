@@ -33,7 +33,7 @@ const OurTeamHome = () => {
       id: 1,
       name: 'Mr Bola Mogaji',
       position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764930951/Bola_Mogaji_1_fhbgmx.png',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931013/1141c64ba323ad97e42785406c5edb3fad0e3548_daydpx.jpg',
       socials: {
         instagram: '#',
         facebook: '#',
@@ -45,7 +45,7 @@ const OurTeamHome = () => {
       id: 2,
       name: 'Mrs Buchi',
       position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764930951/Mrs_Buchi_1_lbdqzb.png',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931014/c35e2aa36836a0519685951ecc12dfa3a9cf9c86_ocvv6f.jpg',
       socials: {
         instagram: '#',
         facebook: '#',
@@ -57,7 +57,7 @@ const OurTeamHome = () => {
       id: 3,
       name: 'Mr Bola Mogaji',
       position: 'Senior Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764930951/Bola_Mogaji_2_rnxfwu.png',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931013/1141c64ba323ad97e42785406c5edb3fad0e3548_daydpx.jpg',
       socials: {
         instagram: '#',
         facebook: '#',
@@ -69,7 +69,7 @@ const OurTeamHome = () => {
       id: 4,
       name: 'Mrs Buchi',
       position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764930951/Mrs_Buchi_2_qqgqzm.png',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931014/c35e2aa36836a0519685951ecc12dfa3a9cf9c86_ocvv6f.jpg',
       socials: {
         instagram: '#',
         facebook: '#',
@@ -106,7 +106,7 @@ const OurTeamHome = () => {
     const animate = () => {
       if (!isPaused && !isDragging) {
         setAutoOffset((prev) => {
-          const newOffset = prev + 0.5
+          const newOffset = prev + 0.3 // Reduced from 0.5 for better performance
           return newOffset >= totalWidth ? 0 : newOffset
         })
       }
@@ -140,7 +140,6 @@ const OurTeamHome = () => {
         </div>
       </div>
 
-      {/* Carousel */}
       <div 
         className='overflow-hidden'
         onMouseEnter={() => setIsPaused(true)}
@@ -163,7 +162,7 @@ const OurTeamHome = () => {
               key={`${member.id}-${index}`}
               className='shrink-0 w-[280px] lg:w-[300px] h-[380px] lg:h-[420px] rounded-2xl overflow-hidden relative group'
             >
-              {/* Default Image */}
+              
               <Image
                 src={member.image}
                 alt={member.name}
@@ -171,20 +170,17 @@ const OurTeamHome = () => {
                 className='object-cover pointer-events-none transition-all duration-500 group-hover:scale-110'
               />
               
-              {/* Info Badge - Always Visible */}
-              <div className='absolute bottom-6 left-6 right-6 bg-white rounded-xl p-4 shadow-lg z-10 group-hover:opacity-0 transition-opacity duration-300'>
+              <div className='absolute bottom-6 left-6 right-6 bg-white/90 rounded-xl p-4 shadow-lg z-10 group-hover:opacity-0 transition-opacity duration-300 text-center'>
                 <h3 className='font-bold text-lg text-gray-900'>{member.name}</h3>
                 <p className='text-sm text-gray-600'>{member.position}</p>
               </div>
 
-              {/* Hover Overlay with Social Icons */}
               <div className='absolute inset-0 bg-primary/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-6'>
                 <div className='text-center text-white px-6'>
                   <h3 className='font-bold text-2xl mb-2'>{member.name}</h3>
                   <p className='text-sm opacity-90'>{member.position}</p>
                 </div>
                 
-                {/* Social Media Icons */}
                 <div className='flex gap-4'>
                   {member.socials.instagram && (
                     <a 
