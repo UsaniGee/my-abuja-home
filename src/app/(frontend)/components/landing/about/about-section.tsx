@@ -80,7 +80,7 @@ const AboutHome = () => {
        </div>
 
        <div>
-        <Image src={'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303559/about-image_bvebna.jpg'} alt='About' width={779} height={384.0441589355469} className='w-full h-full md:h-[384px] object-cover rounded-2xl' sizes="(max-width: 768px) 100vw, 50vw" />
+        <Image src={'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303559/about-image_bvebna.jpg'} alt='About' width={779} height={384.0441589355469} className='w-full h-full md:h-[384px] object-cover rounded-2xl' sizes="(max-width: 768px) 100vw, 50vw" unoptimized />
        </div>
 
 

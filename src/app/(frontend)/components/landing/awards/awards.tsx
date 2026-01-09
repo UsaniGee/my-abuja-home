@@ -199,6 +199,7 @@ const AwardsHome = () => {
                 alt={award.title}
                 fill
                 className='object-cover pointer-events-none'
+                unoptimized
               />
               <div className='absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent' />
               <div className='absolute bottom-0 left-0 right-0 p-5 text-white'>
@@ -238,6 +239,7 @@ const AwardsHome = () => {
                 alt={award.title}
                 fill
                 className='object-cover pointer-events-none'
+                unoptimized
               />
               <div className='absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent' />
               

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Nav from "./components/landing/nav";
-import Footer from "./components/landing/footer";
+import ClientLayout from "./client-layout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +29,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div className='fixed z-99 w-full flex justify-center items-center'>
-        <Nav />
-        </div>
-        <div >
+        <ClientLayout>
           {children}
-        </div>
-        <Footer />
+        </ClientLayout>
       </body>
     </html>
   );

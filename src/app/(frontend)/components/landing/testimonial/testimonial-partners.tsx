@@ -182,6 +182,7 @@ const TestimonialPartnersHome = () => {
                         width={48}
                         height={48}
                         className='w-full h-full object-cover'
+                        unoptimized
                       />
                     </div>
                     <div>
@@ -254,6 +255,7 @@ const TestimonialPartnersHome = () => {
                   width={80}
                   height={80}
                   className='h-20 object-cover aspect-square'
+                  unoptimized
                 />
               </div>
             </SwiperSlide>

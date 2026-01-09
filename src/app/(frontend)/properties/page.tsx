@@ -113,18 +113,30 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
     }
   }
 
-  const { docs: properties, totalDocs } = await payload.find({
-    collection: 'properties',
-    where,
-    page,
-    limit,
-    depth: 1,
-  })
+  let properties = []
+  let totalDocs = 0
+
+  try {
+    const result = await payload.find({
+      collection: 'properties',
+      where,
+      page,
+      limit,
+      depth: 1,
+    })
+    properties = await result.docs
+   
+    
+    totalDocs = await result.totalDocs
+    console.log('Total properties', totalDocs);
+  } catch (error) {
+    console.error('Error fetching properties:', error)
+  }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
      <InnerPageHero
-        backgroundImage="https://res.cloudinary.com/dnu4lxiie/image/upload/v1764929769/IMG_8401_1_2_opmtud.svg"
+        backgroundImage="https://res.cloudinary.com/dnu4lxiie/image/upload/v1765374016/2fc77a07b3da6f47d6c2bab101f6e88b097c76c0_n5ktnh.jpg"
         title="Properties"
         subtitle="Explore our collection of properties, from apartments to houses, and find the perfect home for you."
         breadcrumbs={[
@@ -132,7 +144,6 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
           { label: 'Properties' }
         ]}
         overlayOpacity={0.6}
-        height=""
       />
      <div className=''>
        <Suspense fallback={<div className="h-16 bg-background border-b" />}>
@@ -146,8 +157,8 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
           </p>
         </div>
 
-        {properties.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {totalDocs > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols- gap-6">
             {properties.map((property: any) => (
               <PropertyCard key={property.id} property={property} />
             ))}
@@ -162,6 +173,6 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
         )}
       </main>
      </div>
-    </div>
+    </>
   )
 }

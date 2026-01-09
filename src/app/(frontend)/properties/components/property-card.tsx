@@ -31,9 +31,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
   }).format(price)
 
   return (
-    <Link href={`/properties/${slug}`} className="group block h-full">
-      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-border/50 bg-card/50 backdrop-blur-sm">
-        <div className="relative aspect-4/3 overflow-hidden">
+    <Link href={`/properties/${property.id}`} className="group block h-full">
+      <Card className="relative h-full lg:h-[503px] overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-border/50 bg-card/50 backdrop-blur-sm">
+        <div className="aspect-4/3 overflow-hidden">
           <Image
             src={mainImage}
             alt={title}
@@ -50,35 +50,40 @@ export function PropertyCard({ property }: PropertyCardProps) {
               </Badge>
             )}
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4 pt-12">
-            <p className="text-white font-bold text-xl md:text-2xl">{formattedPrice}</p>
-          </div>
+         
         </div>
         
-        <CardContent className="p-5">
-          <h3 className="font-bold text-lg line-clamp-1 mb-2 group-hover:text-primary transition-colors">{title}</h3>
-          <div className="flex items-center text-muted-foreground text-sm mb-4">
+        <CardContent className="p-5 z-10 text-white">
+          <div className='flex justify-between items-center'>
+            <div>
+          <h3 className="font-medium text-base line-clamp-1 mb-2 transition-colors">{title}</h3>
+          <div className="flex items-center text-sm mb-4">
             <MapPin className="w-4 h-4 mr-1 shrink-0" />
             <span className="line-clamp-1">{location}</span>
+          </div>
+            </div>
+            <div className=" p-4 pt-12">
+            <p className="text-white font-bold text-xl md:text-xl">{formattedPrice}</p>
+          </div>
           </div>
           
           <div className="grid grid-cols-3 gap-2 py-3 border-t border-border/50">
             <div className="flex flex-col items-center justify-center text-center">
-              <div className="flex items-center text-muted-foreground mb-1">
+              <div className="flex items-center mb-1">
                 <Bed className="w-4 h-4 mr-1" />
                 <span className="text-xs font-medium">Beds</span>
               </div>
               <span className="font-semibold">{bedrooms}</span>
             </div>
             <div className="flex flex-col items-center justify-center text-center border-l border-border/50">
-              <div className="flex items-center text-muted-foreground mb-1">
+              <div className="flex items-center mb-1">
                 <Bath className="w-4 h-4 mr-1" />
                 <span className="text-xs font-medium">Baths</span>
               </div>
               <span className="font-semibold">{bathrooms}</span>
             </div>
             <div className="flex flex-col items-center justify-center text-center border-l border-border/50">
-              <div className="flex items-center text-muted-foreground mb-1">
+              <div className="flex items-center mb-1">
                 <Square className="w-4 h-4 mr-1" />
                 <span className="text-xs font-medium">Area</span>
               </div>

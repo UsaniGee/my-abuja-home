@@ -19,7 +19,6 @@ const About = () => {
           { label: 'About us' }
         ]}
         overlayOpacity={0.6}
-        // height="min-h-scree"
       />
 
       <div className='rounded-3xl'>

@@ -8,7 +8,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'Home', href: '/home' },
     { name: 'About us', href: '/about' },
     { name: 'Properties', href: '/properties' },
     { name: 'Services', href: '/services' },
@@ -21,7 +21,7 @@ const Nav = () => {
       <nav className='w-full rounded-[24px] z-50 md:p-0 bg-black/30 backdrop-blur-md  border-b border-white/20 '>
       <div className=' px-6 lg:px-8 py-3'>
         <div className='flex items-center justify-between h-12 md:h-[69px]'>
-          {/* Logo */}
+          
           <Link href='/' className='flex items-center space-x-2 group'>
             <div className=' '>
              <Image src='/Logo.svg' alt='Logo' width={147} height={45} />
