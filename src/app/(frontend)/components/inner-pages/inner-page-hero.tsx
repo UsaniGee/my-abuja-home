@@ -40,7 +40,7 @@ const InnerPageHero: React.FC<InnerPageHeroProps> = ({
       />
       
      
-      <div className='z-10 flex flex-col justify-between p-5 md:p-8 lg:p-12 mt-50'>
+      <div className='z-10 flex flex-col justify-between p-5 md:p-8 lg:p-12 mt-69'>
         <div className='flex-1 flex flex-col justify-center items-center w-full'>
           <div className='text-center'>
             <h1 className='text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6'>
