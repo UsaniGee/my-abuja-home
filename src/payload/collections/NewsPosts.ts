@@ -2,8 +2,8 @@ import { CollectionConfig } from 'payload'
 
 const isAdmin = ({ req }: { req: any }) => Boolean(req?.user)
 
-export const BlogPosts: CollectionConfig = {
-  slug: 'blog-posts',
+export const NewsPosts: CollectionConfig = {
+  slug: 'news-posts',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'publishDate', 'tags'],
@@ -34,8 +34,9 @@ export const BlogPosts: CollectionConfig = {
     },
     {
       name: 'content',
-      type: 'richText',
-      required: false,
+      type: 'textarea',
+      required: true,
+      admin: { rows: 10 },
     },
     {
       name: 'featuredImage',
@@ -63,14 +64,8 @@ export const BlogPosts: CollectionConfig = {
         },
       ],
     },
-    {
-      name: 'publisher',
-      type: 'relationship',
-      relationTo: 'users',
-      required: true,
-    },
   ],
   timestamps: true,
 }
 
-export default BlogPosts
+export default NewsPosts

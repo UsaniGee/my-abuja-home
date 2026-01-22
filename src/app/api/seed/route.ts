@@ -49,7 +49,7 @@ export const GET = async () => {
         bathrooms: 6,
         area: 6000,
         yearBuilt: 2023,
-        images: [], // Empty for now
+        images: [], 
         description: {
           root: {
             type: 'root',
