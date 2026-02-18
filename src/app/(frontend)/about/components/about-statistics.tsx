@@ -105,9 +105,9 @@ const AboutStatistics = () => {
   ]
 
   return (
-    <div className='relative grid lg:justify-items-end bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px] gap-12'>
+    <div className='relative grid lg:justify-items-end bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14 gap-12'>
       
-      <div className="absolute inset-0 mx-5 lg:mx-[56px] my-10 lg:my-[80px]">
+      <div className="absolute inset-0 mx-5 lg:mx-14 my-10 lg:my-20">
         <Image
           src="https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1600/v1764841896/4b4cbef24bbf4459a1e82dfcb3f17875081cb4bc_nkpfrb.jpg"
           alt="Team collaboration"

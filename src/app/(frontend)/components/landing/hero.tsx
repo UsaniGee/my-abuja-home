@@ -32,7 +32,7 @@ const Hero = () => {
     <div className='relative min-h-screen flex justify-center items-center p-5'>
       <div 
         className='absolute inset-0 bg-cover bg-center bg-no-repeat'
-        style={{ backgroundImage: `url(https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1920/v1764303706/HeroBgImg_adjvkt.jpg)` }}
+        style={{ backgroundImage: `url(https://res.cloudinary.com/dnu4lxiie/image/upload/v1771233468/8b89ceb0b3f2d4574f64ae63ad607414b801732f_c6u1xh.png)` }}
       />
       
       <div className='absolute inset-0 bg-black/40' />
@@ -40,12 +40,12 @@ const Hero = () => {
      <div>
       <div className='relative text-center text-white mt-[108.5px]'>
         <h1 className='text-5xl md:text-7xl font-bold mb-4 lg:leading-[87px]'>Find Your Dream <br /> Home With <br /> Us</h1>
-        <p className='text-xl md:text-2xl mt-[24px]'>A leading independent real estate agency shaping modern communities.</p>
+        <p className='text-xl md:text-2xl mt-6'>A leading independent real estate agency shaping modern communities.</p>
       </div>
 
-      <div className='grid grid-cols-2 lg:grid-cols-5 items-center gap-5 lg:gap-10 mt-[55.5px]'>
+      <div className='grid grid-cols-1 lg:grid-cols-5 items-center gap-5 lg:gap-10 mt-[55.5px]'>
         {details.map((detail) => (
-          <div key={detail.title} className='w-full lg:w-[188px] h-[92px] relative text-white bg-white/20 py-6 px-5 rounded-[24px]'>
+          <div key={detail.title} className='w-full lg:w-[188px] h-[92px] relative text-white bg-white/20 py-6 px-5 rounded-3xl'>
             <h2 className='text-sm'>{detail.title}</h2>
             <div className='flex justify-between'>
               <p className='text-xl'>{detail.description}</p>
@@ -54,7 +54,7 @@ const Hero = () => {
           </div>
         ))}
 
-        <div className='flex items-center  lg:w-[56px] h-[56px] relative text-white bg-primary py-4 px-4 rounded-full'><Search  /></div>
+        <div className='flex items-center  lg:w-14 h-14 relative text-white bg-primary py-4 px-4 rounded-full'><Search  /></div>
       </div>
      </div>
     </div>

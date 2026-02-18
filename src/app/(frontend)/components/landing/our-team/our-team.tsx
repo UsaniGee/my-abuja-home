@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button'
 import React, { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { Instagram, Facebook, Youtube } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Linkedin } from 'lucide-react'
+import { FaXTwitter } from "react-icons/fa6";
 
 interface TeamMember {
   id: number
@@ -14,8 +15,10 @@ interface TeamMember {
   socials: {
     instagram?: string
     facebook?: string
-    youtube?: string
-    tiktok?: string
+    youtube?: string   
+    x?: string
+    linkedin?: string
+    whatsapp?: string
   }
 }
 
@@ -33,48 +36,78 @@ const OurTeamHome = () => {
       id: 1,
       name: 'Mr Bola Mogaji',
       position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931013/1141c64ba323ad97e42785406c5edb3fad0e3548_daydpx.jpg',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723343/ADEBOLA_MOGAJI_edited_pdqvsb.png',
       socials: {
-        instagram: '#',
-        facebook: '#',
-        youtube: '#',
-        tiktok: '#'
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
       }
     },
     {
       id: 2,
       name: 'Mrs Buchi',
       position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931014/c35e2aa36836a0519685951ecc12dfa3a9cf9c86_ocvv6f.jpg',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723353/ONYEBUCHI_LENOIR_edited_zkqos4.png',
       socials: {
-        instagram: '#',
-        facebook: '#',
-        youtube: '#',
-        tiktok: '#'
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
       }
     },
     {
       id: 3,
-      name: 'Mr Bola Mogaji',
-      position: 'Senior Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931013/1141c64ba323ad97e42785406c5edb3fad0e3548_daydpx.jpg',
-      socials: {
-        instagram: '#',
-        facebook: '#',
-        youtube: '#',
-        tiktok: '#'
+      name: 'Kindness Emmanuel',
+      position: 'General Manager',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723345/KINDNESS_EMMANUEL_edited_hce31i.png',
+     socials: {
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
       }
     },
     {
       id: 4,
-      name: 'Mrs Buchi',
-      position: 'Executive Director',
-      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_600/v1764931014/c35e2aa36836a0519685951ecc12dfa3a9cf9c86_ocvv6f.jpg',
+      name: 'Shahida Ahmad',
+      position: 'Marketing Manager',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723350/SHAHIDA_AHMAD_edited_ap4jwh.png',
       socials: {
-        instagram: '#',
-        facebook: '#',
-        youtube: '#',
-        tiktok: '#'
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
+      }
+    },
+    {
+      id: 5,
+      name: 'Moni Mogaji',
+      position: 'International Relations Manager',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723346/MONI_MOGAJI_edited_zuabnv.png',
+      socials: {
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
+      }
+    },
+     {
+      id: 6,
+      name: 'Gospel Alhaji',
+      position: 'Brand Ambassador',
+      image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1770723345/GOSPEL_ALHAJI_edited_a23jqq.png',
+     socials: {
+        instagram: 'https://www.instagram.com/myabujahome',
+        facebook: 'https://web.facebook.com/myabujahome',
+        youtube: 'https://www.youtube.com/@myabujahome',
+        linkedin: 'https://www.linkedin.com/in/myabujahomelimited',
+        x: 'https://www.x.com/myabujahome'
       }
     }
   ]
@@ -100,13 +133,13 @@ const OurTeamHome = () => {
   }
 
   useEffect(() => {
-    const cardWidth = 300 + 24 // card width + gap
+    const cardWidth = 300 + 24 
     const totalWidth = teamMembers.length * cardWidth
 
     const animate = () => {
       if (!isPaused && !isDragging) {
         setAutoOffset((prev) => {
-          const newOffset = prev + 0.3 // Reduced from 0.5 for better performance
+          const newOffset = prev + 0.3 
           return newOffset >= totalWidth ? 0 : newOffset
         })
       }
@@ -121,19 +154,19 @@ const OurTeamHome = () => {
   }, [isPaused, isDragging, teamMembers.length])
 
   return (
-    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px]'>
+    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14'>
       <div className='grid lg:grid-cols-3 items-center gap-10 mb-12'>
         <div className='flex items-center gap-2.5'>
           <div className='border-b border-primary w-8.5' />
           <h1 className='border rounded-full border-primary px-4 py-2'>Our Team</h1>
         </div>
-        <div className='text-4xl font-bold text-center lg:text-left'>
+        <div className='text-3xl font-bold text-center lg:text-left'>
           We are at your service, meet our team
         </div>
         <div className='flex justify-end'>
           <Button 
-            onClick={() => router.push('/our-team')} 
-            className='rounded-[30px] w-full lg:w-[100px] lg:h-[48px] px-6 py-6 hover:lg:w-[150px] transition-all duration-300'
+            onClick={() => router.push('/about')} 
+            className='rounded-[30px] w-full lg:w-[100px] lg:h-12 px-6 py-6 hover:lg:w-[150px] transition-all duration-300'
           >
             View all
           </Button>
@@ -160,7 +193,7 @@ const OurTeamHome = () => {
           {infiniteTeam.map((member, index) => (
             <div 
               key={`${member.id}-${index}`}
-              className='shrink-0 w-[280px] lg:w-[300px] h-[380px] lg:h-[420px] rounded-2xl overflow-hidden relative group'
+              className='shrink-0 w-[280px] lg:w-[300px] h-[380px] lg:h-[420px] rounded-2xl overflow-hidden relative group shadow-lg '
             >
               
               <Image
@@ -181,7 +214,7 @@ const OurTeamHome = () => {
                   <p className='text-sm opacity-90'>{member.position}</p>
                 </div>
                 
-                <div className='flex gap-4'>
+                <div className='flex gap-2'>
                   {member.socials.instagram && (
                     <a 
                       href={member.socials.instagram}
@@ -209,17 +242,26 @@ const OurTeamHome = () => {
                       <Youtube className='w-5 h-5' />
                     </a>
                   )}
-                  {member.socials.tiktok && (
+                  {member.socials.linkedin && (
                     <a 
-                      href={member.socials.tiktok}
+                      href={member.socials.linkedin}
                       className='bg-white hover:bg-primary hover:text-white text-primary w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110'
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <svg className='w-5 h-5' viewBox='0 0 24 24' fill='currentColor'>
-                        <path d='M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z'/>
-                      </svg>
+                      <Linkedin className='w-5 h-5' />
                     </a>
                   )}
+                  {member.socials.x && (
+                    <a 
+                      href={member.socials.x}
+                      className='bg-white hover:bg-primary hover:text-white text-primary w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110'
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <FaXTwitter />
+                    </a>
+                  )}
+
+                  
                 </div>
               </div>
             </div>

@@ -33,16 +33,22 @@ export const BlogPosts: CollectionConfig = {
       admin: { rows: 3 },
     },
     {
-      name: 'content',
+      name: 'contents',
       type: 'richText',
-      required: false,
+      required: true,
     },
     {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
-      required: false,
     },
+    // {
+    //   name: 'featuredImage',
+    //   type: 'relationship',
+    //   relationTo: 'media',
+    //   hasMany: true,
+    //   required: false,
+    // },
     {
       name: 'publishDate',
       type: 'date',
@@ -71,6 +77,7 @@ export const BlogPosts: CollectionConfig = {
     },
   ],
   timestamps: true,
+  
 }
 
 export default BlogPosts

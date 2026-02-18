@@ -18,7 +18,7 @@ const NewsGridSection = async () => {
   if (!news.length) return null
 
   return (
-    <section className="px-5 py-10 lg:py-[60px] lg:px-[56px] space-y-6">
+    <section className="px-5 py-10 lg:py-[60px] lg:px-14 space-y-6">
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {news.map((item: any) => {
           const imageUrl = getImageUrl(item.featuredImage)

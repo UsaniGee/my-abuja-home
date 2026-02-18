@@ -157,7 +157,7 @@ const AwardsHome = () => {
   }, [])
 
   return (
-    <div ref={sectionRef} className='bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px] gap-12 overflow-hidden'>
+    <div ref={sectionRef} className='bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14 gap-12 overflow-hidden'>
       <div className='grid justify-center gap-5 mb-12'>
          <div className='flex justify-center items-center gap-2.5'>
         <div className="pt-px w-15 lg:w-60 bg-linear-to-r from-secondary to-primary">

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Instagram, Facebook, Youtube } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Linkedin } from 'lucide-react'
+import { FaXTwitter } from "react-icons/fa6";
 import Image from 'next/image'
 
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -11,17 +12,18 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 const Footer = () => {
   const companyLinks = [
     { name: 'About us', href: '/about' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Blog', href: '/media' },
     { name: 'Properties', href: '/properties' },
     { name: 'Our Services', href: '/services' },
     { name: 'Media', href: '/media' },
   ]
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-    { icon: TikTokIcon, href: 'https://tiktok.com', label: 'TikTok' },
+    { icon: Instagram, href: 'https://www.instagram.com/myabujahome', label: 'Instagram' },
+    { icon: Facebook, href: 'https://web.facebook.com/myabujahome', label: 'Facebook' },
+    { icon: Youtube, href: 'https://www.youtube.com/@myabujahome', label: 'YouTube' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/myabujahomelimited', label: 'LinkedIn' },
+    { icon: FaXTwitter, href: 'https://www.x.com/myabujahome', label: 'X (Twitter)' },
   ]
 
   return (
@@ -35,7 +37,7 @@ const Footer = () => {
         }}
       />
 
-      <div className='relative z-10 max-w-7xl mx-auto px-5 py-16'>
+      <div className='relative z-10 mx-auto px-14 py-16'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8'>
           
           <div className='lg:col-span-1'>
@@ -93,7 +95,13 @@ const Footer = () => {
                   href="tel:+2348088837426"
                   className='text-gray-600 hover:text-primary transition-colors duration-200 text-sm block'
                 >
-                  +234 (0) 808-883-7426
+                  +234 (0) 808-883-7426 
+                </a>
+                 <a 
+                  href="tel:+2347064986275"
+                  className='text-gray-600 hover:text-primary transition-colors duration-200 text-sm block'
+                >
+                  +234 (0) 706-498-6275
                 </a>
               </div>
               <div>
@@ -108,9 +116,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className='text-lg font-semibold text-primary mb-6'>Locations</h3>
+            <h3 className='text-lg font-semibold text-primary mb-6'>Location(s)</h3>
+           <p className='text-primary font-bold text-sm'>Abuja</p>
             <p className='text-gray-600 text-sm'>
-              Garki - Abuja, Nigeria.
+              Freedom Matters Plaza, 112, Oladipo Diya Street Gudu FCT, Abuja Nigeria
             </p>
           </div>
           </div>

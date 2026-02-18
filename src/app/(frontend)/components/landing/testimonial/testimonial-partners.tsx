@@ -113,7 +113,7 @@ const TestimonialPartnersHome = () => {
   ]
 
   return (
-    <div className='px-5 py-10 lg:py-[80px] lg:px-[56px]'>
+    <div className='px-5 py-10 lg:py-20 lg:px-14'>
       
       <div className='grid justify-center gap-5 pb-5'>
          <div className='flex justify-center items-center gap-2.5'>

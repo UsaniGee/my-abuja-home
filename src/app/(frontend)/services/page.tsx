@@ -12,42 +12,42 @@ const Services = () => {
   const services = [
     {
       icon: <BuildingIcon />,
-      title: 'Real Estate Development',
-      description: 'We manage your property from start to finish.',
+      title: 'Lands',
+      description: 'We identify, acquire, and facilitate premium land transactions across Nigeria and internationally, ensuring verified titles and strategic locations. Our expertise connects you with the perfect plot for your vision.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006205/668fce6b3eca5c5a82d2e02b06e3a01487793649_1_j1d8tk.jpg'
     },
     
     {
       icon: <BuildingIcon />,
-      title: 'Sale, Purchase & Development',
-      description: 'We manage your property from start to finish.',
+      title: 'Building',
+      description: 'From residential estates to commercial complexes, we develop quality properties that meet international standards while reflecting local excellence. Your dream structure, expertly delivered.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006204/0f9950d50e8827bc770bf98959eba35129e73632_i6r4qs.jpg'
     },
     
     {
       icon: <PropertySalesIcons />,
-      title: 'Property Sales',
-      description: 'We manage your property from start to finish.',
+      title: 'Brokerage',
+      description: 'Our experienced agents bridge buyers and sellers with integrity, transparency, and market insight gained from over a decade of successful transactions. We make property deals seamless.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006206/61fcd231a1173a5f690695b9290895bcf6ed00fe_prtcbk.jpg'
     },
     {
       icon: <PropManIcon />,
-      title: 'Property Management',
-      description: 'We manage your property from start to finish.',
+      title: 'Patnership',
+      description: 'We collaborate with verified owners and established real estate companies to expand opportunities and deliver exceptional value. Together, we achieve more.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006206/5e774a82befc105ba91458b9d229ada94720a45f_f6kuz5.jpg'
     },
     
     {
       icon: <ConsManIcon />,
-      title: 'Construction Management',
-      description: 'We manage your property from start to finish.',
+      title: 'Construction',
+      description: 'Our construction services bring architectural visions to life with quality craftsmanship, timely delivery, and attention to detail. We build properties that last generations.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006206/ac847bcd4aaca56334e6514a8d1cae048f4c91ac_ctfoat.jpg'
     },
     
     {
       icon: <ArchDesIcon />,
-      title: 'Architecture & Design',
-      description: 'We manage your property from start to finish.',
+      title: 'Advisory',
+      description: 'Navigate the real estate landscape with confidence through our expert guidance on investments, market trends, and property decisions. Strategic advice for optimal outcomes.',
       image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1767006205/05c730df8c531ff370fabd5c1293ed7c9f747dc9_aza45l.jpg'
     },
 
@@ -66,7 +66,7 @@ const Services = () => {
         overlayOpacity={0.6}
        
       />
-      <div className='px-5 py-10 lg:py-[80px] lg:px-[56px] w-full'>
+      <div className='px-5 py-10 lg:py-20 lg:px-14 w-full'>
         <div className='flex flex-col justify-center items-center gap-2'>
         <Button className='w-fit border rounded-full border-primary text-black px-4 py-2 bg-transparent hover:bg-transparent hover:text-primary'>
           Our Services

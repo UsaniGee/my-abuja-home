@@ -33,7 +33,7 @@ export const NewsPosts: CollectionConfig = {
       admin: { rows: 3 },
     },
     {
-      name: 'content',
+      name: 'contents',
       type: 'textarea',
       required: true,
       admin: { rows: 10 },

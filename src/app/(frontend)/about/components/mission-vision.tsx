@@ -49,7 +49,7 @@ const data = [
 
 
   return (
-    <div className="bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px]">
+    <div className="bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
      
         <div className="space-y-6">

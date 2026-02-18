@@ -19,13 +19,13 @@ const BlogGridSection = async () => {
 
   return (
    
-    <section className="px-5 py-10 lg:py-[60px] lg:px-[56px] space-y-6">
+    <section className="px-5 py-10 lg:py-[60px] lg:px-14 space-y-6">
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {posts.map((post: any) => {
           const imageUrl = getImageUrl(post.featuredImage)
           const tags = Array.isArray(post.tags) ? post.tags.map((t: any) => t?.tag).filter(Boolean) : []
           return (
-            <Link href={`/media/${post.id}`}>
+            <Link key={post.id} href={`/media/${post.id}`}>
             <article
               key={post.id}
               className="group rounded-[7px] overflow-hidden flex flex-col"

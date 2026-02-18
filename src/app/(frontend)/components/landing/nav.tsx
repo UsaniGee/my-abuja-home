@@ -17,7 +17,7 @@ const Nav = () => {
   ]
 
   return (
-    <div className='w-full p-5 lg:px-[56px]'>
+    <div className='w-full p-5 lg:px-14'>
       <nav className='w-full rounded-[24px] z-50 md:p-0 bg-black/30 backdrop-blur-md  border-b border-white/20 '>
       <div className=' px-6 lg:px-8 py-3'>
         <div className='flex items-center justify-between h-12 md:h-[69px]'>
@@ -29,12 +29,12 @@ const Nav = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className='hidden md:flex items-center space-x-8'>
+          <div className='hidden md:flex items-center md:space-x-3 lg:space-x-8'>
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className='text-white/90 hover:text-white font-medium transition-all duration-300 relative group'
+                className='text-white/90 hover:text-white font-medium transition-all duration-300 relative group text-sm'
               >
                 {link.name}
                 <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full'></span>
@@ -44,8 +44,8 @@ const Nav = () => {
 
           <div className='space-x-4 hidden md:flex items-center text-white'>
             <span>EN</span>
-             <button className='bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg'>
-              Get in touch
+             <button className='bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg text-sm'>
+            Get in touch
             </button>
           </div>
 

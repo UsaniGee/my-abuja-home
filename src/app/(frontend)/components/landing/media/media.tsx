@@ -45,7 +45,7 @@ const MediaHome = () => {
   }
 
   return (
-    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px]'>
+    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14'>
       <div className='grid lg:grid-cols-3 items-center gap-10 mb-12'>
         <div className='flex items-center gap-2.5'>
           <div className='border-b border-primary w-8.5' />
@@ -69,10 +69,10 @@ const MediaHome = () => {
         
         {mediaItems[0] && (
           <div 
-            className='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group'
+            className='overflow-hidden duration-300 cursor-pointer group'
             onClick={() => router.push(`/media/${mediaItems[0].id}`)}
           >
-            <div className='relative h-[300px] lg:h-[350px] overflow-hidden'>
+            <div className='relative h-[300px] lg:h-[450px] overflow-hidden'>
               <Image
                 src={mediaItems[0].image}
                 alt={mediaItems[0].title}
@@ -81,13 +81,13 @@ const MediaHome = () => {
               />
             </div>
             
-            <div className='p-6 lg:p-8'>
+            <div className='py-6 lg:py-8'>
               <div className='flex items-center gap-3 mb-3'>
                 <span className='text-xs font-semibold text-gray-600'>{mediaItems[0].date}</span>
                 <span className='text-xs text-gray-400'>|</span>
                 <span className='text-xs font-semibold text-gray-600'>{mediaItems[0].category}</span>
               </div>
-              <h3 className='font-bold text-xl lg:text-2xl leading-tight text-gray-900'>
+              <h3 className='font-medium text-xl lg:text-2xl leading-tight tracking-wide text-gray-900'>
                 {mediaItems[0].title}
               </h3>
             </div>
@@ -98,7 +98,7 @@ const MediaHome = () => {
           {mediaItems.slice(1, 3).map((item) => (
             <div 
               key={item.id}
-              className='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer group'
+              className='overflow-hidden  duration-300 cursor-pointer group'
               onClick={() => router.push(`/media/${item.id}`)}
             >
               <div className='relative h-[300px] lg:h-[180px] overflow-hidden'>
@@ -110,13 +110,13 @@ const MediaHome = () => {
                 />
               </div>
               
-              <div className='p-5'>
+              <div className='py-5'>
                 <div className='flex items-center gap-3 mb-2'>
                   <span className='text-xs font-semibold text-gray-600'>{item.date}</span>
                   <span className='text-xs text-gray-400'>|</span>
                   <span className='text-xs font-semibold text-gray-600'>{item.category}</span>
                 </div>
-                <h3 className='font-bold text-lg leading-tight text-gray-900 line-clamp-2'>
+                <h3 className='font-medium text-xl lg:text-2xl leading-tight tracking-wide text-gray-900 line-clamp-2'>
                   {item.title}
                 </h3>
               </div>

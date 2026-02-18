@@ -22,7 +22,7 @@ const About = () => {
       />
 
       <div className='rounded-3xl'>
-      <div className='absolut px-5 py-10 lg:py-[80px] lg:px-[56px] -top-50 w-full'>
+      <div className='absolut px-5 py-10 lg:py-20 lg:px-14 -top-50 w-full'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
           <div className='grid gap-10'>
             <div>

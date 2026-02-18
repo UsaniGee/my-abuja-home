@@ -9,7 +9,7 @@ const InstagramFeedSection = async () => {
   if (!items.length) return null
 
   return (
-    <section className="px-5 py-10 lg:py-[60px] lg:px-[56px] space-y-6">
+    <section className="px-5 py-10 lg:py-[60px] lg:px-14 space-y-6">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Featured</span>

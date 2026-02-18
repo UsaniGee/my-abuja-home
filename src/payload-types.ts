@@ -241,7 +241,7 @@ export interface BlogPost {
   title: string;
   slug: string;
   excerpt: string;
-  content?: {
+  contents?: {
     root: {
       type: string;
       children: {
@@ -277,7 +277,7 @@ export interface NewsPost {
   title: string;
   slug: string;
   excerpt: string;
-  content: string;
+  contents: string;
   featuredImage?: (string | null) | Media;
   publishDate: string;
   tags?:
@@ -495,7 +495,7 @@ export interface BlogPostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   excerpt?: T;
-  content?: T;
+  contents?: T;
   featuredImage?: T;
   publishDate?: T;
   tags?:
@@ -516,7 +516,7 @@ export interface NewsPostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   excerpt?: T;
-  content?: T;
+  contents?: T;
   featuredImage?: T;
   publishDate?: T;
   tags?:

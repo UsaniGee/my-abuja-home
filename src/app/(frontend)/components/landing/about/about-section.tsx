@@ -65,7 +65,7 @@ const AboutHome = () => {
     },
   ]
   return (
-    <div className='grid lg:grid-cols-[2fr_1fr] px-5 py-10 lg:py-[80px] lg:px-[56px] lg:gap-30 gap-10'>
+    <div className='grid lg:grid-cols-[60%_40%] px-5 py-10 lg:py-20 lg:px-14 lg:gap- gap-10'>
         
       <div>
         <div className='flex items-center gap-2.5'>
@@ -74,13 +74,14 @@ const AboutHome = () => {
        </div>
 
        <div>
-        <h1 className='text-3xl md:text-6xl font-bold mb-4 lg:leading-[87px] mt-6 uppercase text-primary'>
-          We’re not just agents, we’re storytellers for spaces.
+        <h1 className='text-2xl md:text-2xl font-bold mb-4  mt-6 uppercase scroll-reveal-text'>
+         MYABUJAHOME LIMITED, as a real estate company, is a fully integrated property development, partnership, brokerage, sales, marketing, advisory and creative company. <br/> With over a decade’s worth of business, and a team of experienced management and staff, both locally and across the globe, we deliver!
+
         </h1>
        </div>
 
        <div>
-        <Image src={'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303559/about-image_bvebna.jpg'} alt='About' width={779} height={384.0441589355469} className='w-full h-full md:h-[384px] object-cover rounded-2xl' sizes="(max-width: 768px) 100vw, 50vw" unoptimized />
+        <Image src={'https://res.cloudinary.com/dnu4lxiie/image/upload/v1771238122/cfd6dbdb338b901b861dadd16c5aae66ecda85d2_ysiizi.png'} alt='About' width={779} height={384.0441589355469} className='w-full h-full md:h-96 object-cover rounded-2xl' sizes="(max-width: 768px) 100vw, 50vw" unoptimized />
        </div>
 
 
@@ -89,7 +90,7 @@ const AboutHome = () => {
        <div className='flex flex-col justify-between gap-10'>
         <div className='grid grid-cols-2 gap-6' >
             {details.map((detail) => (
-            <div key={detail.title} className={`${detail.bg} ${detail.text} w-full grid items-center justify-center lg:w-[194.5px] h-[176.5px] relative  py-6 px-5 rounded-[24px]` } >
+            <div key={detail.title} className={`${detail.bg} ${detail.text} w-full grid items-center justify-center lg:min-w-[194.5px] h-[176.5px] relative  py-6 px-5 rounded-3xl` } >
               <div 
                 className='absolute w-[116px] h-[90px] right-0 top-0 bg-cover bg-center bg-no-repeat'
                 style={{ backgroundImage: `url(${'/Arrow.svg'})` }}
@@ -108,9 +109,9 @@ const AboutHome = () => {
         
         <div className='grid  gap-6'>
           <div className='text-[#A0A0A0] text-xl text-justify'>
-            At myabujahome, we bring bold, creative campaigns to developers and help buyers find the homes they’ve always dreamed of.
+            Our primary goals are to acquire, build, market and sell real estate in all forms (land, buildings, etc.) that we own, or on behalf of verified owners / established Real Estate companies.
           </div>
-          <Button className='rounded-[30px] w-full lg:w-[160px] lg:h-[48px] px-6 py-6'>Get a property</Button>
+          <Button className='rounded-[30px] w-full lg:w-40 lg:h-12 px-6 py-6'>Get a property</Button>
         </div>
         
        </div>        

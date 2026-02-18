@@ -15,23 +15,22 @@ const SuccessStoriesHome = () => {
       youtubeId: 'MapGXs8bJ0Q',
       thumbnail: 'https://img.youtube.com/vi/MapGXs8bJ0Q/maxresdefault.jpg'   
     },
-    {
-      id: 3,
-      title: 'Value After 2 Years - Investment Analysis',
-      youtubeId: 'dQw4w9WgXcQ', 
-      thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
-    },
-    {
-      id: 4,
-      title: 'Where in Abuja do you desire a property?',
-      youtubeId: 'dQw4w9WgXcQ', 
-      thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
-    }
+    // {
+    //   id: 3,
+    //   title: 'Value After 2 Years - Investment Analysis',
+    //   youtubeId: 'dQw4w9WgXcQ', 
+    //   thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
+    // },
+    // {
+    //   id: 4,
+    //   title: 'Where in Abuja do you desire a property?',
+    //   youtubeId: 'dQw4w9WgXcQ', 
+    //   thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
+    // }
   ]
 
   return (
-    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-[80px] lg:px-[56px]'>
-      {/* Header Section */}
+    <div className='bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14'>
       <div className='grid justify-center gap-5 pb-10 lg:pb-16'>
         <div className='flex justify-center items-center gap-2.5'>
           <div className="pt-px w-15 lg:w-60 bg-linear-to-r from-secondary to-primary">
@@ -52,7 +51,7 @@ const SuccessStoriesHome = () => {
         {videos.map((video) => (
           <div 
             key={video.id}
-            className='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+            className='bg-white overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
           >
             <div className='relative aspect-video overflow-hidden'>
               <iframe

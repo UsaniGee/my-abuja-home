@@ -7,6 +7,7 @@ import { getBlogBySlug, getCommentsForPost } from '@/lib/media'
 import { getPayloadClient } from '@/lib/getPayloadClient'
 import { notFound } from 'next/navigation'
 import InnerPageHero from '../../components/inner-pages/inner-page-hero'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 export const dynamic = 'force-dynamic'
 
@@ -92,15 +93,11 @@ const BlogDetailPage = async ({ params }: PageProps) => {
         ) : null}
 
 
-          {/* <article className="prose max-w-none text-muted-foreground border p-7 rounded-xl mt-6">
-          {(blog as any).content && (
-                  <RichText data={(blog as any).content} />
+          <article className="mt-6">
+          {(blog as any).contents && (
+                  <RichText data={(blog as any).contents} />
                  )}
-              </article> */}
-
-        <article className="prose prose-lg max-w-none">
-          <p className="text-gray-700 leading-7 whitespace-pre-line">{blog.content}</p>
-        </article>
+              </article>
 
         <div className="flex gap-2 items-center mt-4">
             <span className="text-base font-bold">Tags:</span>
