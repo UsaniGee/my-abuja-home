@@ -39,7 +39,7 @@ const Hero = () => {
       
      <div>
       <div className='relative text-center text-white mt-[108.5px]'>
-        <h1 className='text-5xl md:text-7xl font-bold mb-4 lg:leading-[87px]'>Find Your Dream <br /> Home With <br /> Us</h1>
+        <h1 className='text-5xl md:text-7xl font-bold mb-4 lg:leading-[87px] font-secondary'>Find Your Dream <br /> Home With <br /> Us</h1>
         <p className='text-xl md:text-2xl mt-6'>A leading independent real estate agency shaping modern communities.</p>
       </div>
 

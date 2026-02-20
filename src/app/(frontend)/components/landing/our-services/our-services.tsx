@@ -26,7 +26,7 @@ const gridItems = [
         id: 3, 
         span: 2, 
         color: 'border-indigo-500', 
-        title: 'Brokeage',
+        title: 'Brokerage',
         image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1771239732/90d8f65af93d611f72a4f8d49c802a31be97f016-removebg-preview_hlucld.png'
     },
     { 
@@ -62,9 +62,9 @@ const OurServicesHome = () => {
               <div className='border-b border-primary w-8.5 ' />
               <h1 className='border rounded-full border-primary px-4 py-2'>Our services</h1>
             </div>
-            <div className='text-[#A0A0A0] text-xl text-justify'>
+            <p className='text-[#A0A0A0] text-xl text-justify'>
                 At myabujahome, we bring bold, creative campaigns to developers and help buyers find the homes they’ve always dreamed of.
-            </div>
+            </p>
             <div className='flex justify-end'>
                 <Button onClick={() => router.push('/services')} className='rounded-[30px] w-full lg:w-40 lg:h-12 px-6 py-6 hover:lg:w-[200px]'>
                     View our services
@@ -82,7 +82,7 @@ const OurServicesHome = () => {
                     >
                         <div className="flex flex-col justify-between h-full">
                             <div className='flex items-center justify-between group-hover:text-white px-6 pt-12 gap-2'>
-                                <h3 className="text-xl lg:text-3xl font-bold uppercase">{item.title}</h3>
+                                <h3 className="text-xl lg:text-3xl font-bold uppercase font-secondary">{item.title}</h3>
                                 <span className='border rounded-full border-black group-hover:border-white px-4 py-4'><ArrowUpRight className='' /></span>
                             </div>
                            <div className='flex w-full justify-end '>

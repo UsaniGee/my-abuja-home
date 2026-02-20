@@ -45,6 +45,16 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-bricolage), system-ui, -apple-system, sans-serif;
+}
+
+.font-secondary {
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.02em; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter);
 }
 
 :root {

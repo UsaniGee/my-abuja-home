@@ -3,9 +3,8 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import BgImage from '../../../../../../public/AboutImg.svg'
-import Properties from './components/properties'
 import Link from 'next/link'
+import Properties from './components/properties'
 
 const OurProperitiesHome = () => {
     const router = useRouter()
@@ -16,9 +15,9 @@ const OurProperitiesHome = () => {
               <div className='border-b border-primary w-8.5 ' />
               <h1 className='border rounded-full border-primary px-4 py-2'>Our Properties</h1>
             </div>
-            <div className='text-4xl font-bold text-center lg:text-left'>
+            <h1 className='text-4xl font-bold text-center lg:text-left'>
                 Our Dream Signature Properties
-            </div>
+            </  h1>
             <div className='flex justify-end'>
                 <Button onClick={() => router.push('/properties')} className='rounded-[30px] w-full lg:w-[229px] lg:h-[48px] px-6 py-6 hover:lg:w-[250px]'>
                    Discover our properties

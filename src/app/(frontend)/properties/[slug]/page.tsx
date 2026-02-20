@@ -62,7 +62,7 @@ export default async function PropertyDetailsPage({
         overlayOpacity={0.5}
       />
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 lg:px-14 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
    
           <div className="lg:col-span-2 space-y-8">
@@ -89,29 +89,29 @@ export default async function PropertyDetailsPage({
             </div>
 
             <h3 className="text-2xl font-medium">Overview</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-card border rounded-xl">
-              <div className="flex flex-col items-center justify-center text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-8 bg-card border rounded-xl">
+              <div className="flex flex-col justify-center ">
                <div className="flex items-center gap-2">
                 <span className="font-bold text-lg">{property.bedrooms || 0}</span>
                 <Bed className="w-6 h-6 text-secondary" />
                </div>
                 <span className="text-sm text-muted-foreground">Bedrooms</span>
               </div>
-              <div className="flex flex-col items-center justify-center text-center ">
+              <div className="flex flex-col justify-center  ">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg">{property.bathrooms || 0}</span>
                 <Bath className="w-6 h-6 text-secondary" />
               </div>
                 <span className="text-sm text-muted-foreground">Bathrooms</span>
               </div>
-              <div className="flex flex-col items-center justify-center text-center ">
+              <div className="flex flex-col justify-center  ">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg">{property.area || 0}</span>
                 <Square className="w-6 h-6 text-secondary" />
                 </div>
                 <span className="text-sm text-muted-foreground">Sq Ft</span>
               </div>
-               <div className="flex flex-col items-center justify-cente text-cente ">
+               <div className="flex flex-col  justify-cente text-cente ">
               <div className="flex items-center gap-2">
                 <Calendar className="w-6 h-6 text-secondary" />
                 <span className="font-bold text-lg">{property.yearBuilt || 'N/A'}</span>
