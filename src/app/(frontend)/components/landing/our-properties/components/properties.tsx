@@ -53,7 +53,7 @@ const Properties = () => {
           <div key={item.id ?? idx} className={`col-span-1 ${spanClass} relative`}>
             <div className={`h-full object-contain overflow-hidden`}>
               {imageUrl ? (
-                <Image src={imageUrl} alt={item.title || 'Property'} width={779} height={384} className={`w-full h-[243px] lg:h-full object-contain hover:scale-110 transition-all duration-300`} sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image src={imageUrl} alt={item.title || 'Property'} width={779} height={384} className={`w-full h-[243px] lg:h-full lg:max-h-[861px] object-cover hover:scale-110 transition-all duration-300`} sizes="(max-width: 768px) 100vw, 50vw" />
               ) : (
                 <div className='w-full h-[243px] lg:h-[861px] bg-gray-700' />
               )}
@@ -72,7 +72,7 @@ const Properties = () => {
               <p className='text-sm lg:text-base'>{typeof item.description === 'string' ? item.description : 'Premium property'}</p>
               <div>
                 <p className='lg:text-3xl font-medium'>PRICE - ₦{item.price?.toLocaleString?.() ?? item.price}</p>
-                <h1 className='lg:text-5xl font-medium'>{item.title}</h1>
+                <h1 className='lg:text-5xl font-medium'>{item.title && item.title.length > 20 ? `${item.title.substring(0, 20)}...` : item.title || 'Property'}</h1>
               </div>
             </div>
           </div>

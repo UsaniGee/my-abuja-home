@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Newsletter from '../components/landing/newsletter/newsletter'
 import { div } from 'framer-motion/client'
 import { ArrowUpRight } from 'lucide-react'
-import { ArchDesIcon, BuildingIcon, ConsManIcon, PropertySalesIcons, PropManIcon } from './icon'
+import { ArchDesIcon, BuildingIcon, ConsManIcon, PropertySalesIcons, PropManIcon } from '@/components/icons/services'
 import Image from 'next/image'
 
 const Services = () => {
