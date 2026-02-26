@@ -30,7 +30,9 @@ if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !pr
 }
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  serverURL: process.env.NODE_ENV === 'production' 
+    ? (process.env.NEXT_PUBLIC_SERVER_URL || 'https://my-abuja-home.vercel.app') 
+    : 'http://localhost:3000',
   admin: {
     user: Users.slug,
     importMap: {
@@ -67,6 +69,8 @@ export default buildConfig({
       collections: {
         media: true,
       },
+      folder: '', // Set to empty to use the root folder or match your existing Cloudinary structure
+      disableLocalStorage: false, // Keep local files for now to ensure local development works seamlessly
     }),
   ],
 
