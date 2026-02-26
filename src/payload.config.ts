@@ -4,6 +4,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { cloudinaryStorage } from 'payload-cloudinary'
 
 import { Users } from './payload/collections/Users' 
 import { Media } from './payload/collections/Media'
@@ -16,7 +17,20 @@ import { Comments } from './payload/collections/Comments'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+if (!process.env.DATABASE_URI) {
+  throw new Error('DATABASE_URI environment variable is required')
+}
+
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET environment variable is required')
+}
+
+if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+  throw new Error('Cloudinary environment variables are required')
+}
+
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
     importMap: {
@@ -35,15 +49,26 @@ export default buildConfig({
     InstagramSettings
   ],
   editor: lexicalEditor({}),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET!,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || 'mongodb://127.0.0.1/my-abuja-home',
+    url: process.env.DATABASE_URI!,
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    cloudinaryStorage({
+      config: {
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+        api_key: process.env.CLOUDINARY_API_KEY!,
+        api_secret: process.env.CLOUDINARY_API_SECRET!,
+      },
+      collections: {
+        media: true,
+      },
+    }),
+  ],
 
   endpoints: [
     {
@@ -51,13 +76,10 @@ export default buildConfig({
       method: 'get',
       handler: async (req) => {
         try {
-              // 1. Get the secure token from Payload's local API (bypass access for server-side use)
               const settings = await (req.payload as any).findGlobal({
                 slug: 'instagram-settings',
                 overrideAccess: true,
               });
-
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const { instagramId, accessToken } = settings as any;
 
               if (!instagramId || !accessToken) {
@@ -67,7 +89,6 @@ export default buildConfig({
                 );
               }
 
-              // 2. Fetch from Instagram
               const igRes = await fetch(
                 `https://graph.instagram.com/${instagramId}/media?fields=id,caption,media_url,permalink&limit=5&access_token=${accessToken}`
               );
@@ -81,7 +102,6 @@ export default buildConfig({
 
               const data = await igRes.json();
 
-              // 3. Return the data to your frontend
               return Response.json(data?.data ?? []);
             } catch (error) {
               console.error('instagram-feed error', error);
@@ -103,7 +123,6 @@ export default buildConfig({
                 overrideAccess: true,
               });
 
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const { accessToken } = settings as any;
 
               if (!accessToken) {
