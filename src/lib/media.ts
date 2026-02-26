@@ -9,7 +9,6 @@ export async function getInstagramFeed() {
   try {
     const res = await fetch(`${baseUrl}/instagram-feed`, {
       cache: 'no-store',
-      // Force dynamic so we always hit the endpoint
       next: { revalidate: 0 },
     })
     if (!res.ok) return []

@@ -1,147 +1,119 @@
 'use client'
 
+import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
+import {  SearchX } from 'lucide-react'
+import Link from 'next/link'
 
 type PropertyItem = {
   id?: string | number
   title?: string
   price?: number | string
   description?: any
-  images?: Array<{ url?: string }>
+  images?: Array<{ url?: string; alt?: string }>
   [key: string]: any
 }
 
+const fetchProperties = async (): Promise<PropertyItem[]> => {
+  const res = await fetch('/api/search-properties')
+  if (!res.ok) throw new Error('Failed to fetch')
+  const data = await res.json()
+  return data.docs ?? data
+}
+
 const Properties = () => {
-  const [properties, setProperties] = useState<PropertyItem[]>([])
-  const [loading, setLoading] = useState(true)
+  const { data: properties, isLoading, isError } = useQuery({
+    queryKey: ['properties'],
+    queryFn: fetchProperties,
+    staleTime: 1000 * 60 * 5, 
+  })
 
-  useEffect(() => {
-    let mounted = true
+  if (isLoading) return <PropertySkeleton />
 
-    ;(async () => {
-      try {
-        const res = await fetch('/api/properties')
-        if (!res.ok) throw new Error('Failed to fetch properties')
-        const data = await res.json()
-        const items = data.docs ?? data
-        if (mounted) setProperties(items)
-      } catch (err) {
-        console.error('Properties fetch error:', err)
-      } finally {
-        if (mounted) setLoading(false)
-      }
-    })()
-
-    return () => {
-      mounted = false
-    }
-  }, [])
-
-  if (loading) return <div className='min-h-[200px] flex items-center justify-center text-white'>Loading properties...</div>
-  if (!properties.length) return <div className='min-h-[200px] flex items-center justify-center text-white'>No properties found</div>
+  if (isError || !properties?.length) return <NoPropertiesFound />
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-10 gap-5 bg-black'>
-      {properties.map((item: PropertyItem, idx) => {
-        const imageUrl = item.images && item.images[0] && item.images[0].url ? item.images[0].url : null
-        const span = idx % 3 === 0 ? 1 : 2
-        const spanClass = span === 2 ? 'md:col-span-5' : 'md:col-span-10'
+   <div className="w-full px-5 lg:px-14 py-10">
+  <div className="columns-1 md:columns-2 gap-6 space-y-6">
+    {properties.slice(0,8).map((item, idx) => {
+      const imageUrl = item.images?.[0]?.url || null;
 
-        return (
-          <div key={item.id ?? idx} className={`col-span-1 ${spanClass} relative`}>
-            <div className={`h-full object-contain overflow-hidden`}>
-              {imageUrl ? (
-                <Image src={imageUrl} alt={item.title || 'Property'} width={779} height={384} className={`w-full h-[243px] lg:h-full lg:max-h-[861px] object-cover hover:scale-110 transition-all duration-300`} sizes="(max-width: 768px) 100vw, 50vw" />
-              ) : (
-                <div className='w-full h-[243px] lg:h-[861px] bg-gray-700' />
-              )}
-            </div>
-
-            <div className='text-white absolute flex gap-2 top-5 left-5 lg:top-14 lg:left-14 z-10 text-sm'>
-              <Button className={`rounded-4xl text-white bg-black border ${idx === 0 ? 'bg-transparent border-primary text-primary' : 'bg-black border-black text-white'}`}>
-                {idx === 0 ? 'Homes' : 'Rent'}
-              </Button>
-              <Button className='rounded-4xl bg-white text-black hover:bg-white'>
-                {idx === 0 ? 'For Rent' : 'Featured'}
-              </Button>
-            </div>
-
-            <div className={`w-full flex flex-col justify-between gap-2 text-white absolute px-5 lg:px-14 bottom-5 lg:bottom-14 z-10 ${span === 1 ? 'lg:flex-row-reverse' : 'flex-col'} ${span === 1 ? 'lg:items-center' : 'items-start'}`}>
-              <p className='text-sm lg:text-base'>{typeof item.description === 'string' ? item.description : 'Premium property'}</p>
-              <div>
-                <p className='lg:text-3xl font-medium'>PRICE - ₦{item.price?.toLocaleString?.() ?? item.price}</p>
-                <h1 className='lg:text-5xl font-medium'>{item.title && item.title.length > 20 ? `${item.title.substring(0, 20)}...` : item.title || 'Property'}</h1>
-              </div>
-            </div>
+      return (
+       
+        <div 
+          key={item.id ?? idx} 
+          className="relative break-inside-avoid min-h-[350px] md:min-h-[300px] lg:h-auto rounded-2xl overflow-hidden  bg-black  backdrop-blur-lg group"
+        >
+          <Link href={`/properties/${item.id}`} >
+          <div className="relative w-full">
+            {imageUrl ? (
+              <img 
+                src={imageUrl} 
+                alt={item.title || 'Property'} 
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" 
+              />
+            ) : (
+              <div className="w-full h-64 bg-black" />
+            )}
+            
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
           </div>
-        )
-      })}
-    </div>
+
+          <div className="absolute top-4 left-4 flex gap-2 z-20">
+            <Button className="rounded-full bg-black/50 backdrop-blur-md border-white/20 text-xs px-4 h-8">
+              {idx % 3 === 0 ? 'Homes' : 'Rent'}
+            </Button>
+            <Button className="rounded-full bg-white text-black text-xs px-4 h-8 hover:bg-gray-200">
+              Featured
+            </Button>
+          </div>
+
+          <div className="absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+            <p className="text-sm uppercase tracking-widest opacity-70 mb-1">
+               ₦{item.price?.toLocaleString?.() ?? item.price}
+            </p>
+            <h2 className="text-2xl font-bold leading-tight">
+              {item.title || 'Property Name'}
+            </h2>
+            <p className="text-sm opacity-80 mt-2 line-clamp-2">
+              {typeof item.description === 'string' ? item.description : 'Premium property available now.'}
+            </p>
+          </div>
+          </Link>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
   )
 }
 
+export const PropertySkeleton = () => (
+  <div className="w-full min-h-screen px-5 py-10 columns-1 md:columns-3 gap-5 space-y-5">
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+      <div key={i} className="break-inside-avoid mb-5">
+        <Skeleton className={`w-full rounded-2xl bg-zinc-800/50 ${i % 2 === 0 ? 'h-96' : 'h-64'}`} />
+      </div>
+    ))}
+  </div>
+)
+
+const NoPropertiesFound = () => (
+  <div className="min-h-screen flex flex-col items-center justify-center text-center p-10 bg-black text-white">
+    <div className="bg-zinc-900 p-6 rounded-full mb-4">
+      <SearchX size={48} className="text-zinc-500" />
+    </div>
+    <h3 className="text-2xl font-bold mb-2 font-bricolage">No Properties Available</h3>
+    <p className="text-zinc-400 max-w-sm mb-6">
+      We couldn't find any listings matching your criteria at the moment. Please check back later.
+    </p>
+    <Button variant="outline" onClick={() => window.location.reload()} className="border-white text-black hover:bg-white hover:text-black">
+      Refresh Page
+    </Button>
+  </div>
+)
+
 export default Properties
-
-
-
-
- // const properties = [
-  //   {
-  //     id: 1,
-  //     span: 1,
-  //     title: 'Broadwater Estate',
-  //     price: '₦1,700,000',
-  //     description: 'Property One Description',
-  //     image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303562/prop-one_k2uecz.svg',
-  //   },
-  //   {
-  //    id: 2,
-  //    span: 2,
-  //    title: 'Broadwater Estate',
-  //    price: '₦1,700,000',
-  //    description: 'Property Two Description',
-  //    image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303540/prop-two_kzjoup.jpg',
-  //  },
-  // {
-  //   id: 3,
-  //   span: 2,
-  //    title: 'Broadwater Estate',
-  //    price: '₦1,700,000',
-  //    description: 'Property Two Description',
-  //    image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303548/prop-three_mxvikg.jpg',
-  //  },
-  //   {
-  //     id: 4,
-  //     span: 1,
-  //     title: 'Broadwater Estate',
-  //     price: '₦1,700,000',
-  //     description: 'Property One Description',
-  //     image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303555/prop-four_sey98g.svg',
-  //   },
-  //    {
-  //    id: 5,
-  //    span: 2,
-  //    title: 'Broadwater Estate',
-  //    price: '₦1,700,000',
-  //    description: 'Property Two Description',
-  //    image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764303545/prop-five_evg4vx.jpg',
-  //  },
-  // {
-  //   id: 6,
-  //   span: 2,
-  //    title: 'Broadwater Estate',
-  //    price: '₦1,700,000',
-  //    description: 'Property Two Description',
-  //    image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1920/v1764303706/HeroBgImg_adjvkt.jpg',
-  //  },
-  //  {
-  //     id: 7,
-  //     span: 1,
-  //     title: 'Broadwater Estate',
-  //     price: '₦1,700,000',
-  //     description: 'Property One Description',
-  //     image: 'https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1920/v1764303706/HeroBgImg_adjvkt.jpg',
-  //   }
-  // ]

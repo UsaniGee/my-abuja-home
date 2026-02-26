@@ -6,6 +6,7 @@ import OurTeamHome from '../components/landing/our-team/our-team'
 import AboutStatistics from './components/about-statistics'
 import MissionVision from './components/mission-vision'
 import Newsletter from '../components/landing/newsletter/newsletter'
+import { ArrowUpRight } from 'lucide-react'
 
 const About = () => {
   return (
@@ -23,7 +24,7 @@ const About = () => {
 
       <div className='rounded-3xl'>
       <div className='absolut px-5 py-10 lg:py-20 lg:px-14 -top-50 w-full'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-14'>
           <div className='grid gap-10'>
             <div>
               <div className='flex items-center gap-2.5'>
@@ -46,6 +47,12 @@ const About = () => {
               <br />
               <p>Our vision is to be the leading real estate company in Nigeria, and to be a partner of choice for our clients, employees, and stakeholders.Our primary goals are to acquire, build, market and sell real estate in all forms (land, buildings, etc.) that we own, or on behalf of verified owners / established Real Estate companies.</p>
             </div>
+
+            <div className='mt-10 border rounded-full border-[#E0E0E0] pl-4 pr-2 py-2 w-fit bg-transparent hover:bg-transparent flex items-center gap-2'>
+               <Button className='text-black bg-transparent hover:bg-transparent'> Meet The Team</Button>
+              <div className='grid place-items-center bg-primary w-12.5 h-12.5 rounded-full'><ArrowUpRight className='' /></div>
+            </div>
+          
           </div>
         </div>
       </div>

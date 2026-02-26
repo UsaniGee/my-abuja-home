@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { getNewsPosts } from '@/lib/media'
+import { useQuery } from '@tanstack/react-query'
+import { Loader2 } from 'lucide-react'
 
 const formatDate = (value?: string) =>
   value ? new Intl.DateTimeFormat(undefined, { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(value)) : ''
@@ -12,10 +15,29 @@ const getImageUrl = (img: any) => {
   return ''
 }
 
-const NewsGridSection = async () => {
-  const news = await getNewsPosts(6)
+const NewsGridSection = () => {
+  const { data: news, isLoading, isError } = useQuery({
+    queryKey: ['news-posts'],
+    queryFn: async () => {
+      const res = await fetch('/api/news?limit=6')
+      if (!res.ok) throw new Error('Failed to fetch news posts')
+      return res.json()
+    },
+  })
 
-  if (!news.length) return null
+  if (isLoading) {
+    return (
+      <div className="flex justify-center py-20">
+        <Loader2 className="animate-spin text-primary" size={32} />
+      </div>
+    )
+  }
+
+  if (isError) {
+    return <p className="text-center text-red-500 py-10">Error loading news.</p>
+  }
+
+  if (!news?.length) return null
 
   return (
     <section className="px-5 py-10 lg:py-[60px] lg:px-14 space-y-6">
@@ -47,7 +69,7 @@ const NewsGridSection = async () => {
                 </h3>
                 <p className="text-gray-600 text-sm line-clamp-3">{item.excerpt}</p>
                 <div className="mt-auto pt-2">
-                  <Link href={`/media/${item.slug}`} className="text-primary font-semibold text-sm inline-flex items-center gap-2">
+                  <Link href={`/media/${item.slug || item.id}`} className="text-primary font-semibold text-sm inline-flex items-center gap-2">
                     Read more
                     <span aria-hidden>→</span>
                   </Link>

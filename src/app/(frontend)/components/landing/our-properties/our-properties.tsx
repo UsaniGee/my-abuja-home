@@ -19,7 +19,7 @@ const OurProperitiesHome = () => {
                 Our Dream Signature Properties
             </  h1>
             <div className='flex justify-end'>
-                <Button onClick={() => router.push('/properties')} className='rounded-[30px] w-full lg:w-[229px] lg:h-[48px] px-6 py-6 hover:lg:w-[250px]'>
+                <Button onClick={() => router.push('/properties')} className='rounded-[30px] w-full lg:w-[229px] lg:h-12 px-6 py-6 hover:lg:w-[250px]'>
                    Discover our properties
                 </Button>
             </div>

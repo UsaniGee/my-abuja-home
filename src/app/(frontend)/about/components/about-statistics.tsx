@@ -105,20 +105,20 @@ const AboutStatistics = () => {
   ]
 
   return (
-    <div className='relative grid lg:justify-items-end bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14 gap-12'>
+    <div className='relative grid lg:justify-items-end bg-[#FAFAFA] px-5 py-10 lg:py-20 lg:px-14 gap-12  lg:h-[1000px]'>
       
       <div className="absolute inset-0 mx-5 lg:mx-14 my-10 lg:my-20">
         <Image
-          src="https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1600/v1764841896/4b4cbef24bbf4459a1e82dfcb3f17875081cb4bc_nkpfrb.jpg"
+          src="https://res.cloudinary.com/dnu4lxiie/image/upload/v1771945305/dd8cddfb624eca62ab2920d772d221965996ed92_tnhyxa.png"
           alt="Team collaboration"
           fill
-          className="object-cover rounded-3xl"
+          className="object-cover rounded-3xl w-full scale-x-[-1] transform"
           sizes="(max-width: 768px) 100vw, 80vw"
         />
         <div className="absolute inset-0 bg-black/20 rounded-3xl" />
       </div>
 
-      <div className="p-5 z-10">    
+      <div className="p-5 z-10 lg:absolute lg:bottom-0 lg:right-auto lg:left-auto mx-3 lg:mx-14 my-10 lg:my-20">    
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 w-full lg:w-[450px]">
           <div className="hidden md:block"></div>
           {stats.map((stat, index) => (

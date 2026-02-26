@@ -42,13 +42,6 @@ export const BlogPosts: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
     },
-    // {
-    //   name: 'featuredImage',
-    //   type: 'relationship',
-    //   relationTo: 'media',
-    //   hasMany: true,
-    //   required: false,
-    // },
     {
       name: 'publishDate',
       type: 'date',

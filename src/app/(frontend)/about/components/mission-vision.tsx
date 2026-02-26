@@ -10,15 +10,15 @@ const MissionVision = () => {
 const missionVisionData = [
     {
         title: "Our Mission",
-        description: "Vestibulum tempus imperdiet sem ac porttitor. Vivamus pulvinar commodo eros, suscipit porttitor velit elementum non. Fusce nec pede..."
+        description: "To deliver exceptional real estate solutions through integrity, expertise, and innovation. We connect people with properties that transform lives, building communities and creating lasting value across Nigeria and beyond."
     },
     {
         title: "Our Vision",
-        description: "Donec dictum tristique porta. Etiam convallis lorem viverra nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit ac..."
+        description: "To be Africa's most trusted real estate partner, renowned for excellence in property development, transparent transactions, and sustainable growth. We envision a future where quality housing and land ownership are accessible to all."
     },
     {
         title: "Our Values",
-        description: "Maecenas egestas justo quis nulla rutrum molestie. Maecenas fringilla elit eu ligula cursus, ut volutpat metus. Vivamus sed libero ornare ornare, tristique ipsum in, gravida odio. Null..."
+        description: "Integrity in every transaction. Excellence in every delivery. Innovation in every solution. Partnership in every relationship. Transparency in every process. Commitment to building Nigeria's future, one property at a time."
     }
 ]
 
@@ -65,7 +65,7 @@ const data = [
 
         <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-full min-h-[500px]">
           <Image
-            src="https://res.cloudinary.com/dnu4lxiie/image/upload/f_auto,q_auto,w_1200/v1764911583/efcd471d9ce2428e3e5c7844d0fd9349f7e5e545_g0larz.jpg"
+            src="https://res.cloudinary.com/dnu4lxiie/image/upload/v1771950834/b77e60a84674e15ec2cb40c8e32b076cabf40ec1_dpmqmg.png"
             alt="Professional woman working"
             fill
             className="object-cover"

@@ -31,16 +31,33 @@ const BlogDetailPage = async ({ params }: PageProps) => {
 
   let blog
   try {
-    const result = await payload.find({
+    // Try slug first, then fallback to ID
+    let result = await payload.find({
       collection: 'blog-posts',
       where: {
-        id: {
-          equals: slug
-        }
+        slug: {
+          equals: slug,
+        },
       },
-      depth: 2
+      limit: 1,
+      depth: 2,
     })
     blog = result.docs[0]
+
+    // Fallback: try by ID for backward compatibility
+    if (!blog) {
+      result = await payload.find({
+        collection: 'blog-posts',
+        where: {
+          id: {
+            equals: slug,
+          },
+        },
+        limit: 1,
+        depth: 2,
+      })
+      blog = result.docs[0]
+    }
   } catch (error) {
     console.error('Error fetching blog:', error)
     return notFound()

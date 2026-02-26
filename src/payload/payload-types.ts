@@ -40,6 +40,7 @@ export interface Media {
   filesize?: number
   width?: number
   height?: number
+  upload?: boolean
 }
 
 export interface Property {

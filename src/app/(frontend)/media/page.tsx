@@ -5,7 +5,7 @@ import NewsGridSection from './components/NewsGridSection'
 
 export const dynamic = 'force-dynamic'
 
-const Media = async () => {
+const Media = () => {
   return (
     <div className="bg-white">
       <InnerPageHero

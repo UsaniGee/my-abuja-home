@@ -63,10 +63,9 @@ export const Properties: CollectionConfig = {
     },
     {
       name: 'images',
-      type: 'relationship',
+      type: 'upload',
       relationTo: 'media',
       hasMany: true,
-      required: false,
     },
     {
       name: 'description',
