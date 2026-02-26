@@ -1,10 +1,8 @@
 import { getPayloadClient } from './getPayloadClient'
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SERVER_URL ||
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  process.env.NEXT_PUBLIC_APP_URL ||
-  'http://localhost:3000'
+const baseUrl = process.env.NODE_ENV === 'production'
+  ? (process.env.NEXT_PUBLIC_SERVER_URL || process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://my-abuja-home.vercel.app')
+  : 'http://localhost:3000'
 
 export async function getInstagramFeed() {
   try {
