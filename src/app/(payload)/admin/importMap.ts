@@ -1,3 +1,2 @@
-export const importMap = {
-  // Empty for now
-}
+// @ts-ignore
+export { importMap } from './importMap.js'
