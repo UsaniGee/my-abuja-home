@@ -70,7 +70,7 @@ export default buildConfig({
         media: true,
       },
       folder: '', // Set to empty to use the root folder or match your existing Cloudinary structure
-      disableLocalStorage: false, // Keep local files for now to ensure local development works seamlessly
+      disableLocalStorage: true, // Keep local files for now to ensure local development works seamlessly
     }),
   ],
 
