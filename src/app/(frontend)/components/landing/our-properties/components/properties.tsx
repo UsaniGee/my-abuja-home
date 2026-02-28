@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import {  SearchX } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type PropertyItem = {
   id?: string | number
@@ -38,7 +39,8 @@ const Properties = () => {
    <div className="w-full px-5 lg:px-14 py-10">
   <div className="columns-1 md:columns-2 gap-6 space-y-6">
     {properties.slice(0,8).map((item, idx) => {
-      const imageUrl = item.images?.[0]?.url || null;
+      const imageObject = item.images?.[0]
+      const imageUrl = imageObject?.cloudinary?.secure_url || imageObject?.cloudinary?.url || imageObject?.url || null;
 
       return (
        
@@ -49,9 +51,11 @@ const Properties = () => {
           <Link href={`/properties/${item.id}`} >
           <div className="relative w-full">
             {imageUrl ? (
-              <img 
+              <Image 
                 src={imageUrl} 
                 alt={item.title || 'Property'} 
+                width={800}
+                height={600}
                 className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" 
               />
             ) : (

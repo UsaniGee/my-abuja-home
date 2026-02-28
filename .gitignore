@@ -35,7 +35,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+.next
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# payload
+/src/payload-types.ts
+/media
+/src/app/(payload)/admin/importMap.js

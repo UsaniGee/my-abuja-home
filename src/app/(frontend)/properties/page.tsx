@@ -3,6 +3,13 @@ import { FilterBar } from './components/filter-bar'
 import InnerPageHero from '../components/inner-pages/inner-page-hero'
 import { PropertyGrid } from './components/PropertityGrid'
 
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Exclusive Properties in Abuja | MyAbujaHome',
+  description: 'Explore our curated list of luxury homes, modern apartments, and prime lands for sale and rent in Abuja.',
+}
+
 export const dynamic = 'force-dynamic'
 
 interface PageProps {

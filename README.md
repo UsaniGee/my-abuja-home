@@ -84,3 +84,38 @@ If that fails, ensure your `src/payload.config.ts` imports do not have file exte
 ### Dependency Conflicts
 
 Use `--legacy-peer-deps` when installing new packages to avoid conflicts between Payload CMS and Next.js versions.
+
+## Production Readiness Checklist
+
+Before deploying to production (Vercel or VPS), ensure the following:
+
+### 1. Environment Variables
+Ensure these are set in your production environment (Vercel Settings, .env on VPS):
+
+- `DATABASE_URI`: Your production MongoDB connection string (e.g., MongoDB Atlas).
+- `PAYLOAD_SECRET`: A strong, random string.
+- `NEXT_PUBLIC_SERVER_URL`: Your production domain (e.g., `https://my-abuja-home.com`).
+- `CLOUDINARY_CLOUD_NAME`: Required for cloud storage.
+- `CLOUDINARY_API_KEY`: Required for cloud storage.
+- `CLOUDINARY_API_SECRET`: Required for cloud storage.
+
+### 2. Deployment Steps
+
+#### Vercel
+- Connect your GitHub repository to Vercel.
+- The build script is already optimized: `npm run build` will automatically generate necessary maps.
+- Ensure `legacy-peer-deps=true` is in your `.npmrc` (already included).
+
+#### VPS (Ubuntu/Nginx)
+1. Clone the repo and `npm install`.
+2. Run `npm run build`.
+3. Use **PM2** to manage the process:
+   ```bash
+   pm2 start npm --name "my-abuja-home" -- run start
+   ```
+4. Configure Nginx as a reverse proxy to port `3000`.
+
+### 3. Media Storage
+This project uses **Cloudinary** for media.
+- Local uploads in the `/media` folder are enabled for redundancy (`disableLocalStorage: false`).
+- Cloudinary ensures your media is persistent even if the VPS or Vercel container restarts.

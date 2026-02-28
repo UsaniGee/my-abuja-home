@@ -41,7 +41,8 @@ export default async function PropertyDetailsPage({
     return notFound()
   }
 
-  const mainImage = (property.images?.[0] as any)?.url || ''
+  const mainImageObject = property.images?.[0]
+  const mainImage = mainImageObject?.cloudinary?.secure_url || mainImageObject?.cloudinary?.url || mainImageObject?.url || ''
   const formattedPrice = new Intl.NumberFormat('en-NG', {
     style: 'currency',
     currency: 'NGN',
@@ -135,11 +136,12 @@ export default async function PropertyDetailsPage({
                     <h3 className="text-2xl font-semibold">Live View</h3>
                     <div className="grid grid-cols-2 gap-4">
                         {property.images.map((image: any, i: number) => {
-                             if (!image?.url) return null;
+                             const imgUrl = image.cloudinary?.secure_url || image.cloudinary?.url || image.url;
+                             if (!imgUrl) return null;
                              return (
                                 <div key={i} className="relative aspect-video rounded-lg overflow-hidden">
                                     <Image 
-                                        src={image.url} 
+                                        src={imgUrl} 
                                         alt={image.alt || property.title} 
                                         fill 
                                         className="object-cover hover:scale-105 transition-transform duration-500" 

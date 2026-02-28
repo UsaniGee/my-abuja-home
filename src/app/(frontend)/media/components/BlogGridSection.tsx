@@ -11,7 +11,20 @@ const formatDate = (value?: string) =>
 const getImageUrl = (img: any) => {
   if (!img) return ''
   if (typeof img === 'string') return img
-  if (img.url) return img.url
+  
+  // Prioritize Cloudinary secure URL if available
+  if (img.cloudinary?.secure_url) return img.cloudinary.secure_url
+  if (img.cloudinary?.url) return img.cloudinary.url
+  
+  // Fallback to standard URL
+  if (img.url) {
+    // If it's already an absolute URL, return it
+    if (img.url.startsWith('http')) return img.url
+    // Otherwise, if we're on the client, it might be a relative path
+    // But on Vercel, relative paths for local media will 404
+    return img.url
+  }
+  
   return ''
 }
 

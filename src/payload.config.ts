@@ -18,21 +18,19 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 if (!process.env.DATABASE_URI) {
-  throw new Error('DATABASE_URI environment variable is required')
+  console.warn('Warning: DATABASE_URI environment variable is not set. Build may succeed but runtime will require a database connection.');
 }
 
 if (!process.env.PAYLOAD_SECRET) {
-  throw new Error('PAYLOAD_SECRET environment variable is required')
+  console.warn('Warning: PAYLOAD_SECRET environment variable is not set. Using a temporary secret for build.');
 }
 
 if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
-  throw new Error('Cloudinary environment variables are required')
+  console.warn('Warning: Cloudinary environment variables are not fully set. Image uploads may fail at runtime.');
 }
 
 export default buildConfig({
-  serverURL: process.env.NODE_ENV === 'production' 
-    ? (process.env.NEXT_PUBLIC_SERVER_URL || 'https://my-abuja-home.vercel.app') 
-    : 'http://localhost:3000',
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
     importMap: {
@@ -51,27 +49,31 @@ export default buildConfig({
     InstagramSettings
   ],
   editor: lexicalEditor({}),
-  secret: process.env.PAYLOAD_SECRET!,
+  secret: process.env.PAYLOAD_SECRET || 'YOUR_SECRET_HERE',
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, 'payload-types'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI!,
+    url: process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/my-abuja-home',
   }),
   sharp,
   plugins: [
-    cloudinaryStorage({
-      config: {
-        cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-        api_key: process.env.CLOUDINARY_API_KEY!,
-        api_secret: process.env.CLOUDINARY_API_SECRET!,
-      },
-      collections: {
-        media: true,
-      },
-      folder: '', // Set to empty to use the root folder or match your existing Cloudinary structure
-      disableLocalStorage: true, // Keep local files for now to ensure local development works seamlessly
-    }),
+    ...(process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET
+      ? [
+          cloudinaryStorage({
+            config: {
+              cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+              api_key: process.env.CLOUDINARY_API_KEY,
+              api_secret: process.env.CLOUDINARY_API_SECRET,
+            },
+            collections: {
+              media: true,
+            },
+            folder: '',
+            disableLocalStorage: false, // This ensures both local and cloud storage
+          }),
+        ]
+      : []),
   ],
 
   endpoints: [
@@ -80,11 +82,11 @@ export default buildConfig({
       method: 'get',
       handler: async (req) => {
         try {
-              const settings = await (req.payload as any).findGlobal({
+              const settings = await (req.payload).findGlobal({
                 slug: 'instagram-settings',
                 overrideAccess: true,
               });
-              const { instagramId, accessToken } = settings as any;
+              const { instagramId, accessToken } = settings;
 
               if (!instagramId || !accessToken) {
                 return Response.json(
@@ -122,12 +124,12 @@ export default buildConfig({
                 return Response.json({ error: 'Unauthorized' }, { status: 401 });
               }
 
-              const settings = await (req.payload as any).findGlobal({
+              const settings = await (req.payload).findGlobal({
                 slug: 'instagram-settings',
                 overrideAccess: true,
               });
 
-              const { accessToken } = settings as any;
+              const { accessToken } = settings;
 
               if (!accessToken) {
                 return Response.json({ error: 'Missing access token' }, { status: 500 });
@@ -146,11 +148,11 @@ export default buildConfig({
                 );
               }
 
-              const newToken = refreshData.access_token as string;
-              const expiresIn = refreshData.expires_in as number | undefined;
+              const newToken = refreshData.access_token;
+              const expiresIn = refreshData.expires_in ;
               const now = new Date().toISOString();
 
-              await (req.payload as any).updateGlobal({
+              await (req.payload).updateGlobal({
                 slug: 'instagram-settings',
                 data: {
                   accessToken: newToken,

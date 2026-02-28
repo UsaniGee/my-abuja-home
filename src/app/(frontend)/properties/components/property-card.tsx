@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Bed, Bath, Square, MapPin } from 'lucide-react'
 
 export function PropertyCard({ property }: { property: any }) {
-  const mainImage = property.images?.[0]?.url || ''
+  const mainImageObject = property.images?.[0]
+  const mainImage = mainImageObject?.cloudinary?.secure_url || mainImageObject?.cloudinary?.url || mainImageObject?.url || ''
   const formattedPrice = new Intl.NumberFormat('en-NG', {
     style: 'currency',
     currency: 'NGN',
@@ -16,10 +18,13 @@ export function PropertyCard({ property }: { property: any }) {
     <Link href={`/properties/${property.id}`} className="group block break-inside-avoid mb-6">
       <div className="relative overflow-hidden rounded-2xl bg-black border transition-all duration-500 ">
          <div className="relative w-full overflow-hidden">
-          <img
+          <Image
             src={mainImage}
-            alt={property.title}
+            alt={property.title || 'Property Image'}
+            width={800}
+            height={600}
             className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+            unoptimized={mainImage.endsWith('.svg')}
           />
           
           <div className="absolute top-4 left-4 flex gap-2 z-10">

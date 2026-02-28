@@ -11,7 +11,17 @@ const formatDate = (value?: string) =>
 const getImageUrl = (img: any) => {
   if (!img) return ''
   if (typeof img === 'string') return img
-  if (img.url) return img.url
+  
+  // Prioritize Cloudinary secure URL if available
+  if (img.cloudinary?.secure_url) return img.cloudinary.secure_url
+  if (img.cloudinary?.url) return img.cloudinary.url
+  
+  // Fallback to standard URL
+  if (img.url) {
+    if (img.url.startsWith('http')) return img.url
+    return img.url
+  }
+  
   return ''
 }
 
