@@ -44,7 +44,7 @@ const Properties = () => {
        
         <div 
           key={item.id ?? idx} 
-          className="relative break-inside-avoid min-h-[350px] md:min-h-[300px] lg:h-auto rounded-2xl overflow-hidden  bg-black  backdrop-blur-lg group"
+          className="relative break-inside-avoid min-h-87.5 md:min-h-75 lg:h-auto rounded-2xl overflow-hidden  bg-black  backdrop-blur-lg group"
         >
           <Link href={`/properties/${item.id}`} >
           <div className="relative w-full">
