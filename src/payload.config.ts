@@ -4,7 +4,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-
+import { cloudinaryStorage } from 'payloadcms-storage-cloudinary'
 import { Users } from './payload/collections/Users' 
 import { Media } from './payload/collections/Media'
 import { Properties } from './payload/collections/Properties'
@@ -43,7 +43,18 @@ export default buildConfig({
     url: process.env.DATABASE_URI || 'mongodb://127.0.0.1/my-abuja-home',
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    cloudinaryStorage({
+      cloudinaryConfig: {
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME || '',
+        api_key: process.env.CLOUDINARY_API_KEY || '',
+        api_secret: process.env.CLOUDINARY_API_SECRET || '',
+      },
+      collections: {
+        media: true,
+      },
+    }),
+  ],
 
   endpoints: [
     {
