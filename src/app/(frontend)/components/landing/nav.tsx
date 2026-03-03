@@ -13,7 +13,7 @@ const Nav = () => {
     { name: 'Properties', href: '/properties' },
     { name: 'Services', href: '/services' },
     { name: 'Media', href: '/media' },
-    { name: 'Calculator', href: '/calculator' },
+    { name: 'Contact Us', href: '/contact-us' },
   ]
 
   return (
