@@ -7,6 +7,7 @@ import { getPayloadClient } from '@/lib/getPayloadClient'
 import { notFound } from 'next/navigation'
 import { Media } from '@/payload/payload-types'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import PropertyGallery from '../components/PropertyGallery'
 
 export const dynamic = 'force-dynamic'
 
@@ -130,7 +131,7 @@ export default async function PropertyDetailsPage({
               </div>
             </div>
 
-             {property.images && property.images.length > 0 && (
+             {/* {property.images && property.images.length > 0 && (
                 <div className="space-y-4">
                     <h3 className="text-2xl font-semibold">Live View</h3>
                     <div className="grid grid-cols-2 gap-4">
@@ -149,7 +150,11 @@ export default async function PropertyDetailsPage({
                         })}
                     </div>
                 </div>
-             )}
+             )} */}
+
+             {property.images && property.images.length > 0 && (
+                  <PropertyGallery images={property.images} title={property.title} />
+              )}
 
           </div>
 
