@@ -153,7 +153,10 @@ export default async function PropertyDetailsPage({
              )} */}
 
              {property.images && property.images.length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-semibold">Live View</h3>
                   <PropertyGallery images={property.images} title={property.title} />
+                  </div>
               )}
 
           </div>
