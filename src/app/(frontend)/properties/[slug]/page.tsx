@@ -2,10 +2,8 @@ import React from 'react'
 import InnerPageHero from '../../components/inner-pages/inner-page-hero'
 import { Badge } from '@/components/ui/badge'
 import { Bed, Bath, Square, MapPin, Calendar } from 'lucide-react'
-import Image from 'next/image'
 import { getPayloadClient } from '@/lib/getPayloadClient'
 import { notFound } from 'next/navigation'
-import { Media } from '@/payload/payload-types'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import PropertyGallery from '../components/PropertyGallery'
 
@@ -130,27 +128,6 @@ export default async function PropertyDetailsPage({
                  )}
               </div>
             </div>
-
-             {/* {property.images && property.images.length > 0 && (
-                <div className="space-y-4">
-                    <h3 className="text-2xl font-semibold">Live View</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                        {property.images.map((image: any, i: number) => {
-                             if (!image?.url) return null;
-                             return (
-                                <div key={i} className="relative aspect-video rounded-lg overflow-hidden">
-                                    <Image 
-                                        src={image.url} 
-                                        alt={image.alt || property.title} 
-                                        fill 
-                                        className="object-cover hover:scale-105 transition-transform duration-500" 
-                                    />
-                                </div>
-                             )
-                        })}
-                    </div>
-                </div>
-             )} */}
 
              {property.images && property.images.length > 0 && (
                   <div className="space-y-4">

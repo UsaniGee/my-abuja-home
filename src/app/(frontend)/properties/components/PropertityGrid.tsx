@@ -5,6 +5,7 @@ import { PropertyCard } from './property-card'
 import { Button } from '@/components/ui/button'
 import { RefreshCcw, Loader2 } from 'lucide-react'
 import { PropertySkeleton } from '../../components/landing/our-properties/components/properties' 
+import Masonry from 'react-masonry-css'
 
 export function PropertyGrid({ searchParams }: { searchParams: any }) {
   
@@ -40,13 +41,25 @@ export function PropertyGrid({ searchParams }: { searchParams: any }) {
 
   const allProperties = data?.pages.flatMap((page) => page.docs) || []
 
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 2,
+    700: 1
+  };
+
   return (
     <div className="w-full">
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="flex w-auto gap-6" 
+        columnClassName="bg-clip-padding" 
+      >
         {allProperties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
+          <div key={property.id} className="mb-6"> 
+            <PropertyCard property={property} />
+          </div>
         ))}
-      </div>
+      </Masonry>
 
       {hasNextPage && (
         <div className="flex justify-center mt-12 pb-10">

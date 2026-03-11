@@ -10,10 +10,8 @@ import { cn } from '@/lib/utils'
 export default function PropertyGallery({ images, title }: { images: any[], title: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
-  
-  // Main Carousel API
+
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel({ loop: true })
-  // Thumbnail Carousel API
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
@@ -69,7 +67,7 @@ export default function PropertyGallery({ images, title }: { images: any[], titl
       </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-[100vw] h-screen w-full p-0 bg-black/95 border-none flex flex-col overflow-hidden">
+        <DialogContent className="max-w-none w-[1000px] h-screen m-0 p-0 rounded-none bg-black/95 border-none flex flex-col overflow-hidden">
           <DialogTitle className="sr-only">Image Gallery for {title}</DialogTitle>
           
           <button 
@@ -84,7 +82,7 @@ export default function PropertyGallery({ images, title }: { images: any[], titl
             <div className="overflow-hidden w-full h-full" ref={emblaMainRef}>
               <div className="flex h-full">
                 {images.map((image, i) => (
-                  <div key={i} className="flex-[0_0_100%] min-w-0 relative h-full flex items-center justify-center p-4">
+                  <div key={i} className="flex-[0_0_100%] min-w-0 relative h-full flex items-center justify-center p-0">
                     <Image 
                       src={image.url} 
                       alt={image.alt || title} 

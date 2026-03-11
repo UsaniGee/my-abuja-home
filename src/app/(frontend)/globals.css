@@ -161,3 +161,17 @@ h1, h2, h3, h4, h5, h6 {
     animation-range: entry 20% cover 60%; 
   }
 }
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -24px; 
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 24px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  margin-bottom: 24px;
+}
