@@ -10,7 +10,9 @@ const formatDate = (value?: string) =>
 
 const getImageUrl = (img: any) => {
   if (!img) return ''
-  if (typeof img === 'string') return img
+  if (typeof img === 'string') {
+    return img.startsWith('http') || img.startsWith('/') ? img : ''
+  }
   if (img.url) return img.url
   return ''
 }
