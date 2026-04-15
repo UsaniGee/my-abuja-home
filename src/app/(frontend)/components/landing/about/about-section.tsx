@@ -65,7 +65,7 @@ const AboutHome = () => {
     },
   ]
   return (
-    <div className='grid lg:grid-cols-[60%_40%] px-5 py-10 lg:py-20 lg:px-14 lg:gap- gap-10'>
+    <div className='grid lg:grid-cols-[60%_40%] px-5 py-10 lg:py-20 lg:px-14 gap-10'>
         
       <div>
         <div className='flex items-center gap-2.5'>
@@ -74,7 +74,7 @@ const AboutHome = () => {
        </div>
 
        <div>
-        <h1 className='text-2xl md:text-2xl font-bold mb-4  mt-6 uppercase scroll-reveal-text'>
+        <h1 className='text-xl md:text-2xl font-bold mb-4  mt-6 scroll-reveal-text'>
          MYABUJAHOME LIMITED, as a real estate company, is a fully integrated property development, partnership, brokerage, sales, marketing, advisory and creative company. <br/> With over a decade’s worth of business, and a team of experienced management and staff, both locally and across the globe, we deliver!
 
         </h1>

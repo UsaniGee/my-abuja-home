@@ -29,37 +29,51 @@ const BlogDetailPage = async ({ params }: PageProps) => {
   const { slug } = await params
   const payload = await getPayloadClient()
 
-  let blog
+  let blog: any = null
   try {
-    // Try slug first, then fallback to ID
+    // Try blog-posts by slug first
     let result = await payload.find({
       collection: 'blog-posts',
-      where: {
-        slug: {
-          equals: slug,
-        },
-      },
+      where: { slug: { equals: slug } },
       limit: 1,
       depth: 2,
     })
     blog = result.docs[0]
 
-    // Fallback: try by ID for backward compatibility
+    // Fallback: try blog-posts by ID
     if (!blog) {
       result = await payload.find({
         collection: 'blog-posts',
-        where: {
-          id: {
-            equals: slug,
-          },
-        },
+        where: { id: { equals: slug } },
+        limit: 1,
+        depth: 2,
+      })
+      blog = result.docs[0]
+    }
+
+    // Fallback: try news-posts by slug
+    if (!blog) {
+      result = await payload.find({
+        collection: 'news-posts',
+        where: { slug: { equals: slug } },
+        limit: 1,
+        depth: 2,
+      })
+      blog = result.docs[0]
+    }
+
+    // Fallback: try news-posts by ID
+    if (!blog) {
+      result = await payload.find({
+        collection: 'news-posts',
+        where: { id: { equals: slug } },
         limit: 1,
         depth: 2,
       })
       blog = result.docs[0]
     }
   } catch (error) {
-    console.error('Error fetching blog:', error)
+    console.error('Error fetching post:', error)
     return notFound()
   }
   if (!blog) {
@@ -85,7 +99,7 @@ const BlogDetailPage = async ({ params }: PageProps) => {
 
  
     <div className="min-h-screen bg-[#F9FAFB]">
-      <div className="px-14 py-10 lg:py-14">
+      <div className="px-5 py-10 lg:py-20 lg:px-14">
         <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-4">
           <Link href="/media" className="text-primary font-semibold">Media</Link>
           <span>•</span>

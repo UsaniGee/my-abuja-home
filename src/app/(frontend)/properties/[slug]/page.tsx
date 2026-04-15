@@ -61,7 +61,7 @@ export default async function PropertyDetailsPage({
         overlayOpacity={0.5}
       />
 
-      <div className="container mx-auto px-4 lg:px-14 py-12">
+      <div className="px-5 py-10 lg:py-20 lg:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
    
           <div className="lg:col-span-2 space-y-8">

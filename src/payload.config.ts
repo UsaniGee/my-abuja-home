@@ -12,6 +12,7 @@ import InstagramSettings from './payload/collections/InstagramSettings'
 import { BlogPosts } from './payload/collections/BlogPosts'
 import { NewsPosts } from './payload/collections/NewsPosts'
 import { Comments } from './payload/collections/Comments'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,6 +36,18 @@ export default buildConfig({
     InstagramSettings
   ],
   editor: lexicalEditor({}),
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.SMTP_USER || 'info@myabujahome.com',
+    defaultFromName: 'My Abuja Home Contact',
+    transportOptions: {
+      host: process.env.SMTP_HOST || 'smtp.ethereal.email',
+      port: Number(process.env.SMTP_PORT) || 587,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -155,6 +168,44 @@ export default buildConfig({
             } catch (error) {
               console.error('instagram-refresh error', error);
               return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+            }
+          },
+        },
+        {
+          path: '/contact',
+          method: 'post',
+          handler: async (req) => {
+            try {
+              let body;
+              if (typeof req.json === 'function') {
+                body = await req.json();
+              } else {
+                body = (req as any).data || (req as any).body || {};
+              }
+              const { firstName, lastName, email, phone, message } = body;
+
+              if (!email || !message || !firstName) {
+                return Response.json({ error: 'Missing required fields' }, { status: 400 });
+              }
+
+              await req.payload.sendEmail({
+                to: process.env.CONTACT_EMAIL_RECIPIENT || process.env.SMTP_USER || 'admin@example.com',
+                from: process.env.SMTP_USER || 'info@myabujahome.com',
+                subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+                html: `
+                  <h2>New Contact Submission</h2>
+                  <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+                  <p><strong>Email:</strong> ${email}</p>
+                  <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+                  <p><strong>Message:</strong></p>
+                  <p>${message.replace(/\n/g, '<br/>')}</p>
+                `,
+              });
+
+              return Response.json({ success: true });
+            } catch (error) {
+              console.error('Contact form submission error:', error);
+              return Response.json({ error: 'Failed to send message' }, { status: 500 });
             }
           },
         },

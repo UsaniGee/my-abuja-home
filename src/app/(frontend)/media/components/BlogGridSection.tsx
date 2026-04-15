@@ -106,34 +106,35 @@ const BlogGridSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-16">
         {(activeTab === 'All' ? gridPosts : posts).map((post: any) => (
-          <article key={post.id} className="group cursor-pointer flex flex-col space-y-4">
-            <div className="relative h-64 rounded-xl overflow-hidden">
-              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary shadow-sm">
-                {post.type}
+          <Link key={post.id} href={`/media/${post.id}`} className="block">
+            <article className="group cursor-pointer flex flex-col space-y-4 h-full">
+              <div className="relative h-64 rounded-xl overflow-hidden">
+                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary shadow-sm">
+                  {post.type}
+                </div>
+                <Image 
+                  src={post.image} 
+                  alt={post.title} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  unoptimized
+                />
               </div>
-              <Image 
-                src={post.image} 
-                alt={post.title} 
-                fill 
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                unoptimized
-              />
-            </div>
-            <div className="flex-1 flex flex-col space-y-2">
-              <h4 className="text-xl font-bold text-gray-900 group-hover:text-primary line-clamp-2">
-                {post.title}
-              </h4>
-              <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
-                {post.excerpt}
-              </p>
-              <div className="mt-auto pt-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                 <span className="text-secondary font-black">{post.source || 'My Abuja Homes'}</span>
-                 <span className="opacity-30">|</span>
-                 <span>{formatDate(post.publishDate)}</span>
+              <div className="flex-1 flex flex-col space-y-2">
+                <h4 className="text-xl font-bold text-gray-900 group-hover:text-primary line-clamp-2">
+                  {post.title}
+                </h4>
+                <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
+                  {post.excerpt}
+                </p>
+                <div className="mt-auto pt-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                   <span className="text-secondary font-black">{post.source || 'My Abuja Homes'}</span>
+                   <span className="opacity-30">|</span>
+                   <span>{formatDate(post.publishDate)}</span>
+                </div>
               </div>
-            </div>
-            <Link href={`/media/${post.id}`} className="sr-only">View Post</Link>
-          </article>
+            </article>
+          </Link>
         ))}
       </div>
     </div>

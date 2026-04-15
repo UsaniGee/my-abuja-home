@@ -1,11 +1,62 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 const ContactFormSection = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError('')
+    setSuccess(false)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      setSuccess(true)
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: '',
+      })
+    } catch (err: any) {
+      setError(err.message || 'Failed to send message')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
-    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+    <section className="px-5 py-10 lg:py-20 lg:px-14">
       <div className="flex flex-col lg:flex-row gap-12">
         {/* Left Column: Form */}
         <div className="w-full lg:w-1/2 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
@@ -17,81 +68,122 @@ const ContactFormSection = () => {
             <p className="text-gray-600 text-lg">Our friendly team would love to hear from you.</p>
           </div>
 
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="first_name" className="text-sm font-medium text-gray-700">First name</label>
-                <input
-                  type="text"
-                  id="first_name"
-                  placeholder="First name"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="last_name" className="text-sm font-medium text-gray-700">Last name</label>
-                <input
-                  type="text"
-                  id="last_name"
-                  placeholder="Last name"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
-                />
-              </div>
+          {success ? (
+            <div className="bg-green-50 text-green-800 p-6 rounded-xl border border-green-200">
+              <h3 className="text-xl font-semibold mb-2">Message sent successfully!</h3>
+              <p>Thank you for reaching out. We will get back to you shortly.</p>
+              <button 
+                onClick={() => setSuccess(false)}
+                className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+               >
+                Send another message
+              </button>
             </div>
-
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="you@company.com"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone number</label>
-              <div className="relative flex items-center">
-                <div className="absolute left-4 flex items-center gap-1 text-gray-700 border-r border-gray-200 pr-2 mr-2">
-                  <span>NG</span>
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-50 text-red-800 p-4 rounded-xl border border-red-200">
+                  {error}
                 </div>
+              )}
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="firstName" className="text-sm font-medium text-gray-700">First name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    placeholder="First name"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="lastName" className="text-sm font-medium text-gray-700">Last name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder="Last name"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
                 <input
-                  type="tel"
-                  id="phone"
-                  placeholder="+234 (815) 000-0000"
-                  className="w-full pl-20 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="you@company.com"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
                 />
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium text-gray-700">Message</label>
-              <textarea
-                id="message"
-                rows={5}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all resize-none"
-              ></textarea>
-            </div>
+              <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone number</label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-4 flex items-center gap-1 text-gray-700 border-r border-gray-200 pr-2 mr-2">
+                    <span>NG</span>
+                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+234 (815) 000-0000"
+                    className="w-full pl-20 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all placeholder:text-gray-400"
+                  />
+                </div>
+              </div>
 
-            <div className="flex items-center gap-3">
-              <input
-                type="checkbox"
-                id="privacy"
-                className="w-4 h-4 rounded border-gray-300 text-[#A10D44] focus:ring-[#A10D44]"
-              />
-              <label htmlFor="privacy" className="text-sm text-gray-600">
-                You agree to our friendly <a href="#" className="underline hover:text-[#A10D44]">privacy policy</a>.
-              </label>
-            </div>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium text-gray-700">Message</label>
+                <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#A10D44] focus:ring-1 focus:ring-[#A10D44] outline-none transition-all resize-none"
+                ></textarea>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#A10D44] text-white font-semibold rounded-2xl hover:bg-[#8e0b3c] transition-colors shadow-lg shadow-[#A10D44]/20"
-            >
-              Send a message
-            </button>
-          </form>
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  required
+                  className="w-4 h-4 rounded border-gray-300 text-[#A10D44] focus:ring-[#A10D44]"
+                />
+                <label htmlFor="privacy" className="text-sm text-gray-600">
+                  You agree to our friendly <a href="#" className="underline hover:text-[#A10D44]">privacy policy</a>.
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-[#A10D44] text-white font-semibold rounded-2xl hover:bg-[#8e0b3c] transition-colors shadow-lg shadow-[#A10D44]/20 disabled:opacity-70 flex justify-center items-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  'Send a message'
+                )}
+              </button>
+            </form>
+          )}
         </div>
 
         {/* Right Column: Map */}

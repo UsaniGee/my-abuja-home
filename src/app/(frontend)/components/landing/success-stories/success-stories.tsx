@@ -15,18 +15,18 @@ const SuccessStoriesHome = () => {
       youtubeId: 'MapGXs8bJ0Q',
       thumbnail: 'https://img.youtube.com/vi/MapGXs8bJ0Q/maxresdefault.jpg'   
     },
-    // {
-    //   id: 3,
-    //   title: 'Value After 2 Years - Investment Analysis',
-    //   youtubeId: 'dQw4w9WgXcQ', 
-    //   thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
-    // },
-    // {
-    //   id: 4,
-    //   title: 'Where in Abuja do you desire a property?',
-    //   youtubeId: 'dQw4w9WgXcQ', 
-    //   thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
-    // }
+    {
+      id: 3,
+      title: 'Real estate Timing: MyABUJAHOME LIMITED',
+      youtubeId: 'pPZnlC4gBoM', 
+      thumbnail: 'https://img.youtube.com/vi/pPZnlC4gBoM/maxresdefault.jpg'
+    },
+    {
+      id: 4,
+      title: 'Myabujahome Mowe Estate Advert',
+      youtubeId: 'FHUdiEXqHSs', 
+      thumbnail: 'https://img.youtube.com/vi/FHUdiEXqHSs/maxresdefault.jpg'
+    }
   ]
 
   return (

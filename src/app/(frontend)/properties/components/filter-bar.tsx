@@ -83,7 +83,7 @@ export function FilterBar() {
 
   return (
     <div className="w-full space-y-4 bg-background lg:grid-cols-3 items-center gap-10 px-5 py-10 lg:py-20 lg:px-14">
-      <div className="grid gap-5 container mx-auto px-4">
+      <div className="grid gap-5 container mx-auto">
         <div className='flex flex-col lg:flex-row justify-between items-center'>
            <h1 className="text-3xl font-bold">Property Listings</h1>
            <div>

@@ -37,7 +37,7 @@ const Footer = () => {
         }}
       />
 
-      <div className='relative z-10 mx-auto px-14 py-16'>
+      <div className='relative z-10 mx-auto px-5 lg:px-14 py-16'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8'>
           
           <div className='lg:col-span-1'>

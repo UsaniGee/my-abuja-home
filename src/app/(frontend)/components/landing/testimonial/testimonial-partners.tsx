@@ -18,7 +18,7 @@ const TestimonialPartnersHome = () => {
       role: 'Realtor',
       rating: 5,
       text: "I've used other kits, but this one is the best. The attention to detail and usability are truly amazing for all designers. I highly recommend it for any type of project.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const TestimonialPartnersHome = () => {
       role: 'UI/X Designer',
       rating: 5,
       text: "This UI Kit is incredibly helpful for my design work. The illustrations are clean, modern, and serve as a perfect for beginners and professionals alike.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 7,
@@ -66,7 +66,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 8,
@@ -74,7 +74,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 9,
@@ -82,7 +82,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 10,
@@ -90,7 +90,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     },
     {
       id: 11,
@@ -98,7 +98,7 @@ const TestimonialPartnersHome = () => {
       role: 'Property Investor',
       rating: 5,
       text: "Working with this team has been an absolute pleasure. Their professionalism and attention to detail made the entire process seamless.",
-      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/v1764303559/about-image_bvebna.jpg'
+      avatar: 'https://res.cloudinary.com/dnu4lxiie/image/upload/q_auto/f_auto/v1745408138/pngegg_shf1bh.png'
     }
   ]
 
